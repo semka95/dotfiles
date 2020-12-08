@@ -1,0 +1,16 @@
+gtk-cursor-theme-size=24
+gtk-enable-animations=1
+
+gtk-primary-button-warps-slider=0
+
+gtk-cursor-theme-name="OSX-ElCap"
+
+
+gtk-font-name="SF Pro Display,  10"
+gtk-theme-name="Sierra-dark-alt"
+gtk-icon-theme-name="Tela-dark"
+gtk-fallback-icon-theme="Tela-dark"
+gtk-toolbar-style=3
+gtk-menu-images=1
+gtk-button-images=1
+

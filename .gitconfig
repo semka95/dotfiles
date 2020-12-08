@@ -1,0 +1,12 @@
+[user]
+	name = Semyon Zernov
+	email = sem.z@protonmail.com
+[credential]
+	helper = cache --timeout=3600
+[core]
+	autocrlf = false
+	editor = code --wait
+[diff]
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
