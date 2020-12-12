@@ -49,7 +49,7 @@ set $wsF1  6:
 set $wsF2  7:
 set $wsF3  8:
 set $wsF4  9:9
-set $wsF5  10:10
+set $wsF5  10:
 
 # Default workspaces for common programs
 assign [app_id="firefox"] $wsF1
@@ -60,6 +60,8 @@ assign [app_id="thunderbird"] $wsF2
 assign [class="^Spotify$"] $wsF3
 assign [app_id="org.kde.konsole" title="~ : ranger — Konsole"] $ws1
 assign [app_id="org.kde.konsole" title="~ : htop — Konsole"] $ws1
+assign [instance="^vlc$"] $wsF5
+assign [app_id="com.chatterino.https:\/\/www.chatterino"] $wsF5
 
 # Font
 font pango:Sans 12
@@ -75,7 +77,6 @@ gaps inner 5
 # Autostart
 exec --no-startup-id mako
 exec --no-startup-id gammastep-indicator
-exec spotify
 exec telegram-desktop
 exec firefox
 exec --no-startup-id libinput-gestures
