@@ -54,15 +54,16 @@
     },
     "network": {
         "format": "{icon}",
-        "format-alt": "{ipaddr}/{cidr} {icon}",
+        "format-alt": "{ipaddr}/{cidr}   {bandwidthDownBits}   {bandwidthUpBits}",
+	"interval": 1,
         "format-alt-click": "click-right",
         "format-icons": {
             "wifi": ["", "" ,""],
             "ethernet": [""],
             "disconnected": [""]
         },
-        "on-click": "konsole -e nmtui",
-        "tooltip": false
+        "on-click": "nm-connection-editor",
+        "tooltip-format-wifi": "{essid}"
     },
     "pulseaudio": {
         "format": "{volume}% {icon}",
