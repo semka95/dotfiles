@@ -144,6 +144,7 @@ input type:keyboard {
     xkb_numlock enabled
     xkb_variant nodeadkeys
     xkb_options grp:shifts_toggle
+    xkb_file $HOME/.config/xkb/keymap.xkb
 }
 
 input type:pointer {
@@ -158,6 +159,7 @@ input type:touchpad {
     scroll_method two_finger
     tap enabled
     drag_lock enabled
+    scroll_factor 0.12
 }
 
 ### Key bindings
