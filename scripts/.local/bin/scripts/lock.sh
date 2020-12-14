@@ -10,8 +10,8 @@ for output in $(swaymsg -t get_outputs | jq -r '.[] .name'); do
   grim -o $output $image
 done
 
-# printf '%s\n' "${images[@]}" | xargs -P 0 -I{} convert -blur 0x8 {} {}
-corrupter -mag 2 -boffset 35 ${images[@]} ${images[@]}
+printf '%s\n' "${images[@]}" | xargs -P 0 -I{} convert -blur 0x8 {} {}
+# corrupter -mag 2 -boffset 35 ${images[@]} ${images[@]}
 
 
 swaylock ${swaylock_args[@]} -s center
