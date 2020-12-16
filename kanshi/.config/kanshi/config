@@ -1,0 +1,20 @@
+profile home {
+    output HDMI-A-2 mode 1440x900 position 1920,0
+    output eDP-1 mode 1920x1080 position 0,0 
+
+    exec swaymsg workspace 6, move workspace to HDMI-A-2
+    exec swaymsg workspace 7, move workspace to HDMI-A-2
+    exec swaymsg workspace 8, move workspace to HDMI-A-2
+    exec swaymsg workspace 9, move workspace to HDMI-A-2
+    exec swaymsg workspace 10, move workspace to HDMI-A-2
+}
+
+profile mobile {
+    output eDP-1 mode 1920x1080 position 0,0
+
+    exec swaymsg workspace 6, move workspace to eDP-1
+    exec swaymsg workspace 7, move workspace to eDP-1
+    exec swaymsg workspace 8, move workspace to eDP-1
+    exec swaymsg workspace 9, move workspace to eDP-1
+    exec swaymsg workspace 10, move workspace to eDP-1
+}

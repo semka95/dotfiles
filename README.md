@@ -1,1 +1,7 @@
-Use _stow [folder_name]_ to apply configuration.
+Based on [this](https://github.com/rbnis/dotfiles) dotfiles.
+
+To apply configuration use:
+
+```
+stow [folder_name]
+```
