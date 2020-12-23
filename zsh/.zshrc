@@ -14,6 +14,7 @@ compinit
 # Path
 export GOPATH="$HOME/go"
 export PATH="${PATH}:$GOPATH/bin"
+export PATH="$HOME/.radicle/bin:$PATH"
 
 # Antigen
 source ~/antigen.zsh
