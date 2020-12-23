@@ -69,7 +69,7 @@ gaps inner 5
 
 # Autostart
 exec mako
-exec gammastep-indicator
+exec gammastep
 exec telegram-desktop
 exec firefox
 exec $term

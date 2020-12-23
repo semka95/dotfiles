@@ -7,6 +7,27 @@
   text-shadow: none;
   transition-duration: 0s;
 }
+window.HDMI-A-2 * {
+  font-size: 11px;
+}
+
+window.HDMI-A-2 #mode,
+window.HDMI-A-2 #workspaces,
+window.HDMI-A-2 #window,
+window.HDMI-A-2 #battery,
+window.HDMI-A-2 #cpu,
+window.HDMI-A-2 #memory,
+window.HDMI-A-2 #network,
+window.HDMI-A-2 #pulseaudio,
+window.HDMI-A-2 #custom-spotify,
+window.HDMI-A-2 #custom-weather,
+window.HDMI-A-2 #custom-gammastep,
+window.HDMI-A-2 #clock,
+window.HDMI-A-2 #temperature,
+window.HDMI-A-2 #tray,
+window.HDMI-A-2 #custom-lang {
+  margin: 0px 11px 0px 0px;
+}
 
 window {
   color: rgba(217, 216, 216, 1);
@@ -46,12 +67,8 @@ window#waybar.solo {
 #memory,
 #network,
 #pulseaudio,
-#idle_inhibitor,
-#backlight,
-#custom-storage,
 #custom-spotify,
 #custom-weather,
-#custom-mail,
 #custom-gammastep,
 #clock,
 #cpu,
