@@ -16,28 +16,34 @@ SAVEIFS=$IFS
 # Change IFS to new line.
 IFS=$'\n'
 
-cacheage=$(($(date +%s) - $(stat -c '%Y' "$cachedir/$cachefile")))
-if [ $cacheage -gt 1740 ] || [ ! -s $cachedir/$cachefile ]; then
-    data=($(curl -s https://en.wttr.in/\?0qnT 2>&1))
-    # without this sleep its printing mess in cache file
-    sleep 1
-    echo ${data[0]} | cut -f1 -d, > $cachedir/$cachefile
-    echo ${data[0]} >> $cachedir/$cachefile
+{
+    # locking cache file only needed if you have more than 2 monitors
+    # I don't know why, but exec script in module settings executes 
+    # separately for each monitor (waybar issue #662), so you have 
+    # to lock cache to avoid race condition
+    flock -x 3
+    cacheage=$(($(date +%s) - $(stat -c '%Y' "$cachedir/$cachefile")))
+    if [ $cacheage -gt 1750 ] || [ ! -s $cachedir/$cachefile ]; then
+        data=($(curl -s https://en.wttr.in/\?0qnT 2>&1))
 
-    echo ${data[1]} | sed -e 's/^\(.\{14\}\).*/\1/' >> $cachedir/$cachefile
-    echo ${data[2]} | sed -e 's/^\(.\{14\}\).*/\1/' >> $cachedir/$cachefile
-    echo ${data[3]} | sed -e 's/^\(.\{14\}\).*/\1/' >> $cachedir/$cachefile
-    echo ${data[4]} | sed -e 's/^\(.\{14\}\).*/\1/' >> $cachedir/$cachefile
-    echo ${data[5]} | sed -e 's/^\(.\{14\}\).*/\1/' >> $cachedir/$cachefile
+        echo ${data[0]} | cut -f1 -d, > $cachedir/$cachefile
+        echo ${data[0]} >> $cachedir/$cachefile
 
-    echo ${data[1]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
-    echo ${data[2]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
-    echo ${data[3]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
-    echo ${data[4]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
-    echo ${data[5]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
-fi
+        echo ${data[1]} | sed -e 's/^\(.\{14\}\).*/\1/' >> $cachedir/$cachefile
+        echo ${data[2]} | sed -e 's/^\(.\{14\}\).*/\1/' >> $cachedir/$cachefile
+        echo ${data[3]} | sed -e 's/^\(.\{14\}\).*/\1/' >> $cachedir/$cachefile
+        echo ${data[4]} | sed -e 's/^\(.\{14\}\).*/\1/' >> $cachedir/$cachefile
+        echo ${data[5]} | sed -e 's/^\(.\{14\}\).*/\1/' >> $cachedir/$cachefile
 
-weather=($(cat $cachedir/$cachefile))
+        echo ${data[1]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
+        echo ${data[2]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
+        echo ${data[3]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
+        echo ${data[4]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
+        echo ${data[5]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
+    fi
+
+    weather=($(cat $cachedir/$cachefile))
+} 3>$cachedir/$cachefile
 
 # Restore IFSClear
 IFS=$SAVEIFS
