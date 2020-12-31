@@ -14,6 +14,7 @@
     "custom/weather",
     "pulseaudio",
     "battery",
+    "custom/bluetooth",
     "network",
     "custom/lang",
     "clock"
@@ -74,7 +75,7 @@
       "ethernet": [""],
       "disconnected": [""]
     },
-    "on-click": "nm-connection-editor",
+    "on-click": "nmtui-connect",
     "tooltip-format-wifi": "{essid}"
   },
   "pulseaudio": {
@@ -122,6 +123,13 @@
     "on-click": "~/.config/waybar/modules/gammastep.sh toggle",
     "tooltip": true,
     "signal": 12
+  },
+  "custom/bluetooth": {
+    "format": "{}",
+    "interval": 1,
+    "exec": "rofi-bluetooth --status",
+    "on-click": "rofi-bluetooth &",
+    "tooltip": false,
   },
   "tray": {
     "icon-size": 18,

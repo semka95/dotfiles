@@ -25,7 +25,8 @@ window.HDMI-A-2 #custom-gammastep,
 window.HDMI-A-2 #clock,
 window.HDMI-A-2 #temperature,
 window.HDMI-A-2 #tray,
-window.HDMI-A-2 #custom-lang {
+window.HDMI-A-2 #custom-lang,
+window.HDMI-A-2 #custom-bluetooth {
   margin: 0px 11px 0px 0px;
 }
 
@@ -74,7 +75,8 @@ window#waybar.solo {
 #cpu,
 #temperature,
 #tray,
-#custom-lang {
+#custom-lang,
+#custom-bluetooth {
   margin: 0px 14px 0px 0px;
 }
 
