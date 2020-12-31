@@ -16,8 +16,7 @@ set $menu rofi -m $(swaymsg -t get_outputs | jq 'map(select(.active) | .focused)
 
 set $lock ~/.local/bin/scripts/lock.sh
 set $power ~/.config/rofi/modi/power
-set $screenshot grim ~/Изображения/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
-set $screenclip slurp | grim -g - ~/Изображения/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
+set $screenshot ~/.local/bin/scripts/screenshot.sh
 set $background ~/Изображения/Обои/рисунки-мультфильмы-жил-был-пес-минимализм-1500172.jpeg
 
 set $cl_high #009ddc
@@ -135,7 +134,6 @@ input type:touchpad {
 bindsym $mod+Return exec $term
 
 bindsym Print exec $screenshot
-bindsym Shift+Print exec $screenclip
 
 bindsym --to-code {
     # Kill focused window
