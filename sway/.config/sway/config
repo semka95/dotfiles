@@ -11,8 +11,9 @@ set $int eDP-1
 set $ext HDMI-A-2
 
 set $term alacritty
-set $menu rofi -m $(expr $(swaymsg -t get_tree | jq '.nodes | map([recurse(.nodes[]?, .floating_nodes[]?) | .focused] | any) | index(true)') - 1) -show drun -run-command 'swaymsg exec -- {cmd}'
-set $menu rofi -m $(swaymsg -t get_outputs | jq 'map(select(.active) | .focused) | index(true)') -show drun -run-command 'swaymsg exec -- {cmd}'
+# idk why this needed, working fine without it
+# set $menu rofi -m $(expr $(swaymsg -t get_tree | jq '.nodes | map([recurse(.nodes[]?, .floating_nodes[]?) | .focused] | any) | index(true)') - 1) -me-select-entry '' -me-accept-entry 'MousePrimary' -show drun -run-command 'swaymsg exec -- {cmd}'
+set $menu rofi -m $(swaymsg -t get_outputs | jq 'map(select(.active) | .focused) | index(true)') -me-select-entry '' -me-accept-entry 'MousePrimary' -show drun -run-command 'swaymsg exec -- {cmd}'
 
 set $lock ~/.local/bin/scripts/lock.sh
 set $power ~/.config/rofi/modi/power
