@@ -9,10 +9,10 @@ entries="
  Reboot,
  Shutdown"
 
-selected=$(echo $entries | rofi -m 0 -dmenu -sep ',' -p "power" -i | awk '{print tolower($2)}')
+selected=$(echo $entries | rofi -hover-select -me-select-entry '' -me-accept-entry 'MousePrimary' -m 0 -dmenu -sep ',' -p "power" -i | awk '{print tolower($2)}')
 
 case $selected in
-  lock) 
+  lock)
     exec ~/.local/bin/scripts/lock.sh;;
   logout)
     swaymsg exit;;
