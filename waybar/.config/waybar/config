@@ -75,7 +75,7 @@
       "ethernet": [""],
       "disconnected": [""]
     },
-    "on-click": "nmtui-connect",
+    "on-click": "alacritty -e nmtui-connect",
     "tooltip-format-wifi": "{essid}"
   },
   "pulseaudio": {

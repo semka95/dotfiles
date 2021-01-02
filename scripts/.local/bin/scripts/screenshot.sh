@@ -47,6 +47,8 @@ CHOICE=`rofi -hover-select -me-select-entry '' -me-accept-entry 'MousePrimary' -
  Screenshare
 EOF`
 
+sleep 0.1
+
 mkdir -p $TARGET
 FILENAME="$TARGET/$(date +'%Y-%m-%d_%Hh%Mm%Ss_screenshot.png')"
 RECORDING="$TARGET/$(date +'%Y-%m-%d_%Hh%Mm%Ss_recording.mp4')"
@@ -56,30 +58,24 @@ case $(echo $CHOICE | cut -c 5- | tr '[:upper:]' '[:lower:]') in
         grim "$FILENAME"
         REC=0 ;;
     "screenshot region")
-        sleep 0.1
         slurp | grim -g - "$FILENAME"
         REC=0 ;;
     "screenshot selected output")
-        sleep 0.1
         echo "$OUTPUTS" | slurp | grim -g - "$FILENAME"
         REC=0 ;;
     "screenshot selected window")
-        sleep 0.1
         echo "$WINDOWS" | slurp | grim -g - "$FILENAME"
         REC=0 ;;
     "screenshot focused")
         grim -g "$(eval echo $FOCUSED)" "$FILENAME"
         REC=0 ;;
     "record selected output")
-        sleep 0.1
         $RECORDER -g "$(echo "$OUTPUTS"|slurp)" -f "$RECORDING"
         REC=1 ;;
     "record selected window")
-        sleep 0.1
         $RECORDER -g "$(echo "$WINDOWS"|slurp)" -f "$RECORDING"
         REC=1 ;;
     "record region")
-        sleep 0.1
         $RECORDER -g "$(slurp)" -f "$RECORDING"
         REC=1 ;;
     "record focused")
