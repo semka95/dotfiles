@@ -3,44 +3,48 @@
 set -e
 
 ## USER PREFERENCES ##
-MENU="rofi -dmenu -u 6,7,8,9"
 RECORDER=wf-recorder
 TARGET=$(xdg-user-dir PICTURES)/screenshots
+SCREENSHARE=~/.local/bin/scripts/screenshare.sh
 
-NOTIFY=$(pidof mako || pidof dunst) || true
 FOCUSED=$(swaymsg -t get_tree | jq '.. | ((.nodes? + .floating_nodes?) // empty) | .[] | select(.focused and .pid) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')
 OUTPUTS=$(swaymsg -t get_outputs | jq -r '.[] | select(.active) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')
 WINDOWS=$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')
 REC_PID=$(pidof $RECORDER) || true
 
-notify() {
-    ## if the daemon is not running notify-send will hang indefinitely
-    if [ $NOTIFY ]; then
-        notify-send "$@"
+screenshareToggle() {
+    if $SCREENSHARE is-recording; then
+        $SCREENSHARE stop
     else
-        echo NOTICE: notification daemon not active
-        echo "$@"
+        $SCREENSHARE start
     fi
 }
 
 if [ ! -z $REC_PID ]; then
-    echo pid: $REC_PID
-    kill -SIGINT $REC_PID
-    notify-send "Screen recorder stopped" -t 2000
-    exit 0
+    if ! $SCREENSHARE is-recording; then
+        echo pid: $REC_PID
+        kill -SIGINT $REC_PID
+        notify-send "Screen recorder stopped" -t 2000
+        exit 0
+    fi
 fi
 
-CHOICE=`$MENU -p "How to make a screenshot?" << EOF
+# Tried to add -me-select-entry '' -me-accept-entry 'MousePrimary' options for one click accept
+# and https://github.com/davatorium/rofi/pull/1234 patch for select on hover, but it doesn't work
+# when I click window/output menu option, looks like it registers my double click as I'm choose window.
+# I opened issue https://github.com/lbonn/rofi/issues/19. Quick fix for this issue is to add sleep 0.1
+# before action.
+CHOICE=`rofi -hover-select -me-select-entry '' -me-accept-entry 'MousePrimary' -dmenu -p "How to make a screenshot?" << EOF
  Screenshot Fullscreen
  Screenshot Focused
  Screenshot Selected Window
  Screenshot Selected Output
  Screenshot Region
-------------
  Record Focused
  Record Selected Window
  Record Selected Output
  Record Region
+ Screenshare
 EOF`
 
 mkdir -p $TARGET
@@ -49,36 +53,51 @@ RECORDING="$TARGET/$(date +'%Y-%m-%d_%Hh%Mm%Ss_recording.mp4')"
 
 case $(echo $CHOICE | cut -c 5- | tr '[:upper:]' '[:lower:]') in
     "screenshot fullscreen")
-        grim "$FILENAME" ;;
+        grim "$FILENAME"
+        REC=0 ;;
     "screenshot region")
-        slurp | grim -g - "$FILENAME" ;;
+        sleep 0.1
+        slurp | grim -g - "$FILENAME"
+        REC=0 ;;
     "screenshot selected output")
-        echo "$OUTPUTS" | slurp | grim -g - "$FILENAME" ;;
+        sleep 0.1
+        echo "$OUTPUTS" | slurp | grim -g - "$FILENAME"
+        REC=0 ;;
     "screenshot selected window")
-        echo "$WINDOWS" | slurp | grim -g - "$FILENAME" ;;
+        sleep 0.1
+        echo "$WINDOWS" | slurp | grim -g - "$FILENAME"
+        REC=0 ;;
     "screenshot focused")
-        grim -g "$(eval echo $FOCUSED)" "$FILENAME" ;;
+        grim -g "$(eval echo $FOCUSED)" "$FILENAME"
+        REC=0 ;;
     "record selected output")
+        sleep 0.1
         $RECORDER -g "$(echo "$OUTPUTS"|slurp)" -f "$RECORDING"
         REC=1 ;;
     "record selected window")
+        sleep 0.1
         $RECORDER -g "$(echo "$WINDOWS"|slurp)" -f "$RECORDING"
         REC=1 ;;
     "record region")
+        sleep 0.1
         $RECORDER -g "$(slurp)" -f "$RECORDING"
         REC=1 ;;
     "record focused")
         $RECORDER -g "$(eval echo $FOCUSED)" -f "$RECORDING"
         REC=1 ;;
+    "screenshare")
+        screenshareToggle ;;
     *)
         grim -g "$(eval echo $CHOICE)" "$FILENAME" ;;
 esac
 
-
-if [ $REC ]; then
-    notify-send "Recording" "Recording stopped: $RECORDING" -t 6000
-    wl-copy < $RECORDING
-else
-    notify-send "Screenshot" "File saved as $FILENAME\nand copied to clipboard" -t 6000 -i $FILENAME
-    wl-copy < $FILENAME
-fi
+case $REC in
+    0)
+        notify-send "Screenshot" "File saved as $FILENAME\nand copied to clipboard" -t 6000 -i $FILENAME
+        wl-copy < $FILENAME
+        ;;
+    1)
+        notify-send "Recording" "Recording stopped: $RECORDING" -t 6000
+        wl-copy < $RECORDING
+        ;;
+esac
