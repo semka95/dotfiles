@@ -80,7 +80,7 @@ case $(echo ${weather[7]##*,} | tr '[:upper:]' '[:lower:]') in
 "blowing snow" | "moderate or heavy sleet" | "patchy light snow" | "light snow" | "light snow showers")
     condition=""
     ;;
-"blizzard" | "patchy moderate snow" | "moderate snow" | "patchy heavy snow" | "heavy snow" | "moderate or heavy snow with thunder" | "moderate or heavy snow showers")
+"snow" | "blizzard" | "patchy moderate snow" | "moderate snow" | "patchy heavy snow" | "heavy snow" | "moderate or heavy snow with thunder" | "moderate or heavy snow showers")
     condition=""
     ;;
 "thundery outbreaks possible" | "patchy light rain with thunder" | "moderate or heavy rain with thunder" | "patchy light snow with thunder")
