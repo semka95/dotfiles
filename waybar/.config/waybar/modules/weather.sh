@@ -27,13 +27,12 @@ IFS=$'\n'
         data=($(curl -s https://en.wttr.in/$LOCATION\?0qnT 2>&1))
 
         echo ${data[0]} | cut -f1 -d, > $cachedir/$cachefile
-        echo ${data[0]} >> $cachedir/$cachefile
 
-        echo ${data[1]} | sed -e 's/^\(.\{14\}\).*/\1/' >> $cachedir/$cachefile
-        echo ${data[2]} | sed -e 's/^\(.\{14\}\).*/\1/' >> $cachedir/$cachefile
-        echo ${data[3]} | sed -e 's/^\(.\{14\}\).*/\1/' >> $cachedir/$cachefile
-        echo ${data[4]} | sed -e 's/^\(.\{14\}\).*/\1/' >> $cachedir/$cachefile
-        echo ${data[5]} | sed -e 's/^\(.\{14\}\).*/\1/' >> $cachedir/$cachefile
+        echo ${data[1]} | sed -e 's/^\(.\{14\}\).*/\1/' | cut -c 4- >> $cachedir/$cachefile
+        echo ${data[2]} | sed -e 's/^\(.\{14\}\).*/\1/' | cut -c 4- >> $cachedir/$cachefile
+        echo ${data[3]} | sed -e 's/^\(.\{14\}\).*/\1/' | cut -c 4- >> $cachedir/$cachefile
+        echo ${data[4]} | sed -e 's/^\(.\{14\}\).*/\1/' | cut -c 4- >> $cachedir/$cachefile
+        echo ${data[5]} | sed -e 's/^\(.\{14\}\).*/\1/' | cut -c 4- >> $cachedir/$cachefile
 
         echo ${data[1]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
         echo ${data[2]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
@@ -48,11 +47,10 @@ IFS=$'\n'
 # Restore IFSClear
 IFS=$SAVEIFS
 
-temperature=$(echo ${weather[8]} | sed -E 's/([[:digit:]]+)\.\./\1 to /g')
-temperatureShort=$(echo ${weather[8]} | sed -E 's/(-?[0-9]+\.\.)//g')
+temperatureShort=$(echo ${weather[7]} | sed -E 's/(\(-?[0-9]+\))//g')
 
 # https://fontawesome.com/icons?s=solid&c=weather
-case $(echo ${weather[7]##*,} | tr '[:upper:]' '[:lower:]') in
+case $(echo ${weather[6]##*,} | tr '[:upper:]' '[:lower:]') in
 "clear" | "sunny")
     condition=""
     ;;
@@ -91,7 +89,7 @@ case $(echo ${weather[7]##*,} | tr '[:upper:]' '[:lower:]') in
     ;;
 esac
 
-printf -v tooltip '<tt><big><b>%s</b></big>\n\n%s  <i>%s</i>\n%s  <span foreground="aqua">%s</span>\n%s  <span foreground="coral">%s</span>\n%s  %s\n%s  <span foreground="lightseagreen">%s</span></tt>' "${weather[1]}" "${weather[2]}" "${weather[7]}" "${weather[3]}" "${weather[8]}" "${weather[4]}" "${weather[9]}" "${weather[5]}" "${weather[10]}" "${weather[6]}" "${weather[11]}"
+printf -v tooltip '<tt><big><b>%s</b></big>\n\n%s  <i>%s</i>\n%s  <span foreground="aqua">%s</span>\n%s  <span foreground="coral">%s</span>\n%s  %s\n%s  <span foreground="lightseagreen">%s</span></tt>' "${weather[0]}" "${weather[1]}" "${weather[6]}" "${weather[2]}" "${weather[7]}" "${weather[3]}" "${weather[8]}" "${weather[4]}" "${weather[9]}" "${weather[5]}" "${weather[10]}"
 tooltip=$( echo "${tooltip}" | jq -Rs )
 
 printf '{"text":"%s %s", "alt":"%s", "tooltip":"%s"}\n' "$temperatureShort" "$condition" "${weather[0]}" "${tooltip:1:-3}"
