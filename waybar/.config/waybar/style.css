@@ -19,13 +19,13 @@ window.HDMI-A-2 #cpu,
 window.HDMI-A-2 #memory,
 window.HDMI-A-2 #network,
 window.HDMI-A-2 #pulseaudio,
+window.HDMI-A-2 #language,
 window.HDMI-A-2 #custom-spotify,
 window.HDMI-A-2 #custom-weather,
 window.HDMI-A-2 #custom-gammastep,
 window.HDMI-A-2 #clock,
 window.HDMI-A-2 #temperature,
 window.HDMI-A-2 #tray,
-window.HDMI-A-2 #custom-lang,
 window.HDMI-A-2 #custom-bluetooth {
   margin: 0px 11px 0px 0px;
 }
@@ -68,6 +68,7 @@ window#waybar.solo {
 #memory,
 #network,
 #pulseaudio,
+#language,
 #custom-spotify,
 #custom-weather,
 #custom-gammastep,
@@ -75,7 +76,6 @@ window#waybar.solo {
 #cpu,
 #temperature,
 #tray,
-#custom-lang,
 #custom-bluetooth {
   margin: 0px 14px 0px 0px;
 }
@@ -90,12 +90,4 @@ window#waybar.solo {
 
 #battery.charging {
   color: rgba(217, 216, 216, 1);
-}
-
-#custom-storage.warning {
-  color: rgba(255, 210, 4, 1);
-}
-
-#custom-storage.critical {
-  color: rgba(238, 46, 36, 1);
 }
