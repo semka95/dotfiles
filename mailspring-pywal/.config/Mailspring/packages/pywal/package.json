@@ -1,0 +1,12 @@
+{
+  "name": "pywal",
+  "title": "Pywal Theme",
+  "displayName": "Pywal Theme",
+  "theme": "ui",
+  "version": "1.0.0",
+  "description": "Pywal generated theme.",
+  "license": "MIT",
+  "engines": {
+    "mailspring": "*"
+  }
+}

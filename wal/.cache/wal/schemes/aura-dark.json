@@ -1,0 +1,26 @@
+{
+  "wallpaper": "~/.cache/wal/bg.png",
+  "special": {
+    "background": "#2B2D37",
+    "foreground": "#C5CDD9",
+    "cursor": "#B877DB"
+  },
+  "colors": {
+    "color0": "#363A49",
+    "color1": "#EC7279",
+    "color2": "#A0C980",
+    "color3": "#DEB974",
+    "color4": "#6CB6EB",
+    "color5": "#D38AEA",
+    "color6": "#5DBBC1",
+    "color7": "#C5CDD9",
+    "color8": "#363A49",
+    "color9": "#EC7279",
+    "color10": "#A0C980",
+    "color11": "#DEB974",
+    "color12": "#6CB6EB",
+    "color13": "#D38AEA",
+    "color14": "#5DBBC1",
+    "color15": "#C5CDD9"
+  }
+}
