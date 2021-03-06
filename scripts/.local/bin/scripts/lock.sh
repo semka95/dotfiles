@@ -14,5 +14,5 @@ printf '%s\n' "${images[@]}" | xargs -P 0 -I{} convert -blur 0x8 {} {}
 # corrupter -mag 2 -boffset 35 ${images[@]} ${images[@]}
 
 
-swaylock ${swaylock_args[@]} -s center
+swaylock ${swaylock_args[@]} -f -s center
 rm ${images[@]}
