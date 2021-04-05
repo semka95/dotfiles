@@ -109,6 +109,8 @@ input type:touchpad {
 ### Key bindings
 bindsym $mod+Return exec $term
 
+bindsym $mod+6 exec devbook && for_window [class="^Devbook$"] floating enable
+
 bindsym Print exec $screenshot
 
 bindsym --to-code {
@@ -143,6 +145,8 @@ bindsym --locked {
     XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
     $mod+F11 exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
     $mod+F12 exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
+    $mod+Shift+F11 exec playerctl volume 0.05-
+    $mod+Shift+F12 exec playerctl volume 0.05+
     XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
     $mod+F6 exec playerctl play-pause
     $mod+F7 exec playerctl previous
