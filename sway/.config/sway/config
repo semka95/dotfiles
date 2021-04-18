@@ -23,23 +23,43 @@ set $screenshot ~/.local/bin/scripts/screenshot.sh
 set $ws1   1:
 set $ws2   2:
 set $ws3   3:
-set $ws4   4:4
-set $ws5   5:5
+set $ws4   4:
+set $ws5   5:
 set $wsF1  6:
-set $wsF2  7:
+set $wsF2  7:
 set $wsF3  8:
-set $wsF4  9:9
+set $wsF4  9:
 set $wsF5  10:
 
 # Default workspaces for common programs
-assign [app_id="firefox"] $wsF1
 assign [instance="^jetbrains-goland$"] $ws2
 assign [instance="^code$"] $ws2
+
 assign [app_id="telegramdesktop"] $ws3
-assign [app_id="thunderbird"] $wsF2
+assign [app_id="net.sourceforge.mumble.mumble"] $ws3
+assign [instance="^element$"] $ws3
+assign [instance="^discord$"] $ws3
+assign [instance="^signal$"] $ws3
+
+assign [app_id="org.kde.dolphin"] $ws4
+
+assign [app_id="thunderbird"] $ws5
+assign [instance="^mailspring$"] $ws5
+assign [app_id="org.gabmus.gfeeds"] $ws5
+assign [app_id="lagrange"] $ws5
+
+assign [app_id="firefox"] $wsF1
+
+assign [app_id="devdocs-desktop"] $wsF2
+
 assign [class="^Spotify$"] $wsF3
-assign [app_id="org.kde.konsole" title="~ : ranger — Konsole"] $ws1
-assign [app_id="org.kde.konsole" title="~ : htop — Konsole"] $ws1
+assign [instance="^freezer$"] $wsF3
+assign [app_id="qmmp"] $wsF3
+assign [app_id="audacious"] $wsF3
+
+assign [instance="^typora$"] $wsF4
+assign [instance="^p3x-onenote$"] $wsF4
+
 assign [instance="^vlc$"] $wsF5
 assign [app_id="com.chatterino.https:\/\/www.chatterino"] $wsF5
 
@@ -49,8 +69,6 @@ exec gammastep
 exec telegram-desktop
 exec firefox
 exec $term
-exec $term -e 'htop' &
-exec $term -e 'ranger' &
 exec_always ~/.config/waybar/waybar.sh
 # Everything working nice without kanshi in my simple setup
 # exec_always pkill kanshi; exec kanshi
@@ -109,7 +127,10 @@ input type:touchpad {
 ### Key bindings
 bindsym $mod+Return exec $term
 
-bindsym $mod+6 exec devbook && for_window [class="^Devbook$"] floating enable
+bindsym $mod+6 exec floating devbook
+
+bindsym --no-repeat --whole-window button8 exec dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.startTalking                                                     
+bindsym --no-repeat --whole-window button9 exec dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.stopTalking 
 
 bindsym Print exec $screenshot
 
@@ -243,5 +264,11 @@ bindsym --to-code {
     $mod+k resize shrink height 10px
     $mod+l resize grow width 10px
 }
+
+# idk why, but without this gnome keyring not working, auth window not popping up, 
+# and there's dbus errors in logs
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 include style.conf
