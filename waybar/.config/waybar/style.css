@@ -26,7 +26,8 @@ window.HDMI-A-2 #custom-gammastep,
 window.HDMI-A-2 #clock,
 window.HDMI-A-2 #temperature,
 window.HDMI-A-2 #tray,
-window.HDMI-A-2 #custom-bluetooth {
+window.HDMI-A-2 #custom-bluetooth,
+window.HDMI-A-2 #custom-media {
   margin: 0px 11px 0px 0px;
 }
 
@@ -76,7 +77,8 @@ window#waybar.solo {
 #cpu,
 #temperature,
 #tray,
-#custom-bluetooth {
+#custom-bluetooth,
+#custom-media {
   margin: 0px 14px 0px 0px;
 }
 
@@ -89,5 +91,9 @@ window#waybar.solo {
 }
 
 #battery.charging {
-  color: rgba(217, 216, 216, 1);
+  color: rgb(0, 255, 21);
+}
+
+#temperature.critical {
+  color: rgba(238, 46, 36, 1);
 }
