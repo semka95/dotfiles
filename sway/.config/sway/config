@@ -42,6 +42,7 @@ assign [instance="^discord$"] $ws3
 assign [instance="^signal$"] $ws3
 
 assign [app_id="org.kde.dolphin"] $ws4
+assign [instance="^pcmanfm$"] $ws4
 
 assign [app_id="thunderbird"] $ws5
 assign [instance="^mailspring$"] $ws5
@@ -61,7 +62,7 @@ assign [instance="^typora$"] $wsF4
 assign [instance="^p3x-onenote$"] $wsF4
 
 assign [instance="^vlc$"] $wsF5
-assign [app_id="com.chatterino.https:\/\/www.chatterino"] $wsF5
+assign [instance="^chatterino$"] $wsF5
 
 # Autostart
 exec_always ~/.config/mako/launch.sh
@@ -92,9 +93,10 @@ workspace $wsF4 output $ext
 workspace $wsF5 output $ext
 
 ### Idle configuration
-exec swayidle \
+exec swayidle -w \
     timeout 300 'exec $lock' \
-    timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+    resume 'swaymsg "output * dpms on"' \
+    timeout 600 'swaymsg "output * dpms off"' \
     before-sleep 'exec $lock'
 
 ### Input configuration
