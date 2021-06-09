@@ -127,7 +127,8 @@ input type:touchpad {
     scroll_method two_finger
     tap enabled
     drag_lock enabled
-    scroll_factor 0.2
+    scroll_factor 0.3
+    click_method none
 }
 
 ### Specific window configuration
