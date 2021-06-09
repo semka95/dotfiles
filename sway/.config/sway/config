@@ -130,6 +130,11 @@ input type:touchpad {
     scroll_factor 0.2
 }
 
+### Specific window configuration
+for_window [title="^Authentication required$"] floating enable
+for_window [title="^Картинка в картинке$"] floating enable, resize set 367 207 px, sticky enable
+for_window [app_id="^xdg-desktop-portal-gtk$"] floating enable
+
 ### Key bindings
 bindsym $mod+Return exec $term
 
