@@ -72,7 +72,7 @@
       "ethernet": [""],
       "disconnected": [""]
     },
-    "on-click": "kitty -e nmtui-connect",
+    "on-click": "kitty --class nmwui nmtui-connect",
     "tooltip-format-wifi": "{essid} {frequency}",
     "tooltip-format-ethernet": "{bandwidthDownBits}   {bandwidthUpBits}"
   },
