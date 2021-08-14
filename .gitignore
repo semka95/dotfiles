@@ -1,3 +1,5 @@
 .vscode
 bookmarks
 .env
+spotify/.config/spicetify/Backup/*
+spotify/.config/spicetify/Extracted/*

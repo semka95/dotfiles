@@ -16,4 +16,4 @@ window decoration {
   text-shadow: none;
 }
 @import "colors.css";
-@import 'colors.css';
+@import "colors.css";
