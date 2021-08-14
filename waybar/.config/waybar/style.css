@@ -97,3 +97,11 @@ window#waybar.solo {
 #temperature.critical {
   color: rgba(238, 46, 36, 1);
 }
+
+#pulseaudio.mic {
+  color: rgba(238, 46, 36, 1);
+}
+
+#pulseaudio.mic.source-muted {
+  color: rgba(217, 216, 216, 1);
+}

@@ -12,6 +12,7 @@
     "temperature",
     "custom/weather",
     "pulseaudio",
+    "pulseaudio#mic",
     "battery",
     "custom/bluetooth",
     "network",
@@ -86,6 +87,13 @@
     },
     "scroll-step": 5,
     "on-click": "pavucontrol",
+    "tooltip": false
+  },
+  "pulseaudio#mic": {
+    "format": "{format_source}",
+    "format-source": "",
+    "format-source-muted": "",
+    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
     "tooltip": false
   },
   "backlight": {
