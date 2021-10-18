@@ -57,12 +57,13 @@ assign [class="^Spotify$"] $wsF3
 assign [instance="^freezer$"] $wsF3
 assign [app_id="qmmp"] $wsF3
 assign [app_id="audacious"] $wsF3
+assign [class="^foobar2000.exe$"] $wsF3
 
 assign [instance="^typora$"] $wsF4
-assign [instance="^p3x-onenote$"] $wsF4
 
 assign [instance="^vlc$"] $wsF5
 assign [instance="^chatterino$"] $wsF5
+assign [app_id="^mpv$"] $wsF5
 
 # Autostart
 exec_always ~/.config/mako/launch.sh
@@ -75,6 +76,7 @@ exec_always ~/.config/waybar/waybar.sh
 # exec_always pkill kanshi; exec kanshi
 exec wal -R
 exec /usr/lib/kdeconnectd
+exec easyeffects --gapplication-service
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 output $int position 0,0 resolution 1920x1080
