@@ -29,7 +29,7 @@ antigen bundle docker-compose
 antigen bundle golang
 antigen bundle heroku
 antigen bundle httpie
-
+antigen bundle kubectl
 
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
