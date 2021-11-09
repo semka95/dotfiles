@@ -138,7 +138,7 @@
     "return-type": "json",
     "format-icons": {
       "Playing": " ",
-      "Paused": " ",
+      "Paused": " "
     },
     "max-length":70,
     "exec": "playerctl metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{playerName}} : {{title}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
