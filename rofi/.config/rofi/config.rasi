@@ -1,37 +1,85 @@
 configuration {
-    modi:            "drun";
-    show-icons:      true;
-    icon-theme:      "Paper";
-    sidebar-mode:    false;
-    display-drun:    "";
+	font:							"Sans 12";
+    show-icons:                     true;
+	icon-theme: 					"Papirus";
+    display-drun: 					"";
+    disable-history:                false;
+	sidebar-mode: 					false;
+    me-select-entry:                "";
+    me-accept-entry:                "MousePrimary";
 }
 
-* {
-    color-background: rgba(35, 31, 32, 0.85);
-    color-text:       rgba(217, 216, 216, 1);
-    color-highlight:  rgba(0, 157, 220, 1);
+@import "colors.rasi"
 
-    background-color: transparent;
-    text-color:       @color-text;
-    spacing:          30;
-
-    font:             "Sans 18";
+window {
+    transparency:                   "real";
+    background-color:               black/50%;
+    text-color:                     @foreground;
+    fullscreen:                     true;
+    padding:                        30%;
+    border:                         none;
 }
 
-#window {
-    fullscreen:       true;
-    transparency:     "background";
-
-    background-color: @color-background;
-   
-    children:         [ dummy1, hdum, dummy2 ];
+prompt {
+    enabled: 						true;
+	background-color: 				@background;
+	text-color: 					@foreground;
+	font:							"Sans 14";
 }
 
-#hdum {
-    orientation: horizontal;
-    children:    [ dummy3, mainbox, dummy4 ];
+entry {
+    background-color:               @background;
+    text-color:                     @foreground;
+    placeholder-color:              @inactive-foreground;
+    expand:                         true;
+    horizontal-align:               0;
+    placeholder:                    "Search...";
+    padding:                        0.10% 0% 0% 1%;
+    blink:                          true;
 }
 
-#element selected {
-    text-color: @color-highlight;
+inputbar {
+	children: 						[ prompt, entry ];
+    background-color:               @background;
+    text-color:                     @foreground;
+    expand:                         false;
+    margin:                         0% 0% 0% 1%;
+    padding:                        2% 2% 2% 0%;
+}
+
+listview {
+    background-color:               @background;
+    columns:                        2;
+    spacing:                        1%;
+    layout:                         vertical;
+    border:                         none;
+    margin:                         0 0.5%;
+}
+
+mainbox {
+    background-color:               @background;
+	border:							1px;
+    border-radius:                  5px;
+	border-color:					@border;
+    children:                       [ inputbar, listview ];
+    spacing:                       	0%;
+    padding:                        0%;
+}
+
+element {
+    orientation:                    horizontal;
+    padding:                        0.5%;
+}
+
+element-icon {
+    size:                           24px;
+}
+
+element-text {
+    vertical-align:                 0.5;
+    margin:                         0% 0.25%;
+}
+
+element selected {
+    border-radius:                  5px;
 }

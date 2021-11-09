@@ -17,6 +17,10 @@
 #   Arch repositories: rofi, bluez-utils (contains bluetoothctl)
 # Source: https://github.com/ClydeDroid/rofi-bluetooth/blob/master/rofi-bluetooth
 
+# Constants
+divider="---------"
+goback="Back"
+
 # Checks if bluetooth controller is powered on
 power_on() {
     if bluetoothctl show | grep -q "Powered: yes"; then
@@ -30,9 +34,14 @@ power_on() {
 toggle_power() {
     if power_on; then
         bluetoothctl power off
+        sleep 1
         show_menu
     else
+        if rfkill list bluetooth | grep -q 'blocked: yes'; then
+            rfkill unblock bluetooth && sleep 3
+        fi
         bluetoothctl power on
+        sleep 1
         show_menu
     fi
 }
@@ -120,10 +129,10 @@ device_connected() {
 toggle_connection() {
     if device_connected $1; then
         bluetoothctl disconnect $1
-        show_menu
+        device_menu "$device"
     else
         bluetoothctl connect $1
-        show_menu
+        device_menu "$device"
     fi
 }
 
@@ -143,10 +152,10 @@ device_paired() {
 toggle_paired() {
     if device_paired $1; then
         bluetoothctl remove $1
-        show_menu
+        device_menu "$device"
     else
         bluetoothctl pair $1
-        show_menu
+        device_menu "$device"
     fi
 }
 
@@ -166,10 +175,10 @@ device_trusted() {
 toggle_trust() {
     if device_trusted $1; then
         bluetoothctl untrust $1
-        show_menu
+        device_menu "$device"
     else
         bluetoothctl trust $1
-        show_menu
+        device_menu "$device"
     fi
 }
 
@@ -195,10 +204,7 @@ print_status() {
                 ((counter++))
             fi
         done
-
-       if [ $counter -eq 0 ]; then
-           printf " On"
-       fi
+        printf "\n"
     else
         echo " Off"
     fi
@@ -220,14 +226,14 @@ device_menu() {
     fi
     paired=$(device_paired $mac)
     trusted=$(device_trusted $mac)
-    options="$connected\n$paired\n$trusted"
+    options="$connected\n$paired\n$trusted\n$divider\n$goback\nExit"
 
     # Open rofi menu, read chosen option
-    chosen="$(echo -e "$options" | rofi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -dmenu -no-fixed-num-lines -yoffset -100 -i -p "$device_name")"
+    chosen="$(echo -e "$options" | $rofi_command "$device_name")"
 
     # Match chosen option to command
     case $chosen in
-        "")
+        "" | $divider)
             echo "No option chosen."
             ;;
         $connected)
@@ -238,6 +244,9 @@ device_menu() {
             ;;
         $trusted)
             toggle_trust $mac
+            ;;
+        $goback)
+            show_menu
             ;;
     esac
 }
@@ -256,7 +265,6 @@ show_menu() {
         scan=$(scan_on)
         pairable=$(pairable_on)
         discoverable=$(discoverable_on)
-        divider="---------"
 
         # Options passed to rofi
         options="$devices\n$divider\n$power\n$scan\n$pairable\n$discoverable\nExit"
@@ -266,7 +274,7 @@ show_menu() {
     fi
 
     # Open rofi menu, read chosen option
-    chosen="$(echo -e "$options" | rofi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -dmenu -no-fixed-num-lines -yoffset -100 -i -p "Bluetooth")"
+    chosen="$(echo -e "$options" | $rofi_command "Bluetooth")"
 
     # Match chosen option to command
     case $chosen in
@@ -292,6 +300,8 @@ show_menu() {
             ;;
     esac
 }
+
+rofi_command="rofi -dmenu -no-fixed-num-lines -i -p"
 
 case "$1" in
     --status)

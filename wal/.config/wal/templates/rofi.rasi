@@ -1,0 +1,17 @@
+* {{
+    normal-background: @background;
+    normal-foreground: @foreground;
+
+    alternate-normal-background: @background;
+    alternate-normal-foreground: @foreground;
+
+    selected-normal-background: {color4};
+    selected-normal-foreground: @background;
+
+    background-color: @background;
+    background: {background};
+    foreground: {foreground};
+    border-color: @background;
+    inactive-foreground: {color8};
+    border: {color5};
+}}

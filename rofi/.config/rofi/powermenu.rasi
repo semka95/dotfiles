@@ -1,0 +1,90 @@
+configuration {
+	font:							"Sans 12";
+    show-icons:                     false;
+    drun-display-format:            "{name}";
+    disable-history:                false;
+	sidebar-mode: 					false;
+    hover-select:                   true;
+    me-select-entry:                "";
+    me-accept-entry:                "MousePrimary";
+    selected-row:                   0;
+}
+
+@import "colors.rasi"
+
+window {
+    transparency:                   "real";
+    background-color:               black/50%;
+    text-color:                     @foreground;
+    fullscreen:                     true;
+    padding:                        35% 25%;
+}
+
+
+prompt {
+    enabled: 						true;
+    padding:                        0.5% 0.5% 0.5% 0%;
+	background-color: 				@inactive-foreground;
+	text-color: 					@foreground;
+	font:							"Sans 12";
+}
+
+textbox-prompt-colon {
+	expand: 						false;
+	str: 							"System |";
+	background-color: 				@inactive-foreground;
+	text-color: 					@foreground;
+    padding:                        0.5% 0.1% 0.5% 0.5%;
+}
+
+inputbar {
+	children: 						[ textbox-prompt-colon, prompt ];
+    background-color:               @inactive-foreground;
+    text-color:                     @foreground;
+    border:                  		0% 0.2% 0.2% 0%;
+    border-radius:                  5px 100% 100% 100%;
+    border-color:                  	@selected-normal-background;
+    margin:                         0% 21.3% 0% 0%;
+    padding:                        0.5%;
+}
+
+listview {
+    background-color:               @background;
+    margin:                         0;
+    spacing:                        2%;
+    layout:                         horizontal;
+    border:                         none;
+    margin:                         0 0.5%;
+    cycle:                          false;
+}
+
+mainbox {
+    background-color:               @background;
+	border:							1px;
+    border-radius:                  5px;
+	border-color:					@border;
+    children:                       [ inputbar, listview ];
+    spacing:                       	3.5%;
+    padding:                        4% 0% 0% 2%;
+}
+
+element {
+    background-color:               @inactive-foreground;
+    text-color:                     @foreground;
+    border-radius:                  100%;
+}
+
+element-text {
+    background-color: 				#00000000;
+    text-color:       				inherit;
+	font:							"Sans 32";
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         4.5% 2.7%;
+}
+
+element selected {
+    background-color:               @selected-normal-background;
+    text-color:                     @background;
+    border-radius:                  100%;
+}
