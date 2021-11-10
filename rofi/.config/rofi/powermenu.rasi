@@ -8,7 +8,6 @@ configuration {
     me-select-entry:                "";
     me-accept-entry:                "MousePrimary";
     selected-row:                   0;
-    monitor:                        -1;
 }
 
 @import "colors.rasi"

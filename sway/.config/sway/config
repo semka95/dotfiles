@@ -11,7 +11,7 @@ set $int eDP-1
 set $ext HDMI-A-2
 
 set $term kitty
-set $menu rofi -show drun -run-command 'swaymsg exec -- {cmd}'
+set $menu rofi -m -1 -show drun -run-command 'swaymsg exec -- {cmd}'
 
 set $lock ~/.local/bin/scripts/lock.sh
 set $power ~/.config/rofi/modi/power

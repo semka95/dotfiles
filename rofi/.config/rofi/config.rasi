@@ -7,7 +7,6 @@ configuration {
 	sidebar-mode: 					false;
     me-select-entry:                "";
     me-accept-entry:                "MousePrimary";
-    monitor:                        -1;
 }
 
 @import "colors.rasi"
