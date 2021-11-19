@@ -150,10 +150,10 @@ for_window [app_id="nmwui"] floating enable, resize set 550 650 px,
 ### Key bindings
 bindsym $mod+Return exec $term
 
-bindsym $mod+6 exec floating devbook
-
-bindsym --no-repeat --whole-window button8 exec dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.startTalking
-bindsym --no-repeat --whole-window button9 exec dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.stopTalking
+# have to install modified sway - https://aur.archlinux.org/packages/sway-mask-modifiers-git
+# because of the issue https://github.com/swaywm/sway/issues/6456
+bindsym --no-repeat --mask-modifiers --whole-window button9 exec dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.startTalking                                                     
+bindsym --no-repeat --mask-modifiers --whole-window --release button9 exec dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.stopTalking 
 
 bindsym Print exec $screenshot
 
