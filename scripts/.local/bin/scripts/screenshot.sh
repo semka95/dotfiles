@@ -29,17 +29,17 @@ if [ ! -z $REC_PID ]; then
     fi
 fi
 
-# Tried to add -me-select-entry '' -me-accept-entry 'MousePrimary' options for one click accept
-# and https://github.com/davatorium/rofi/pull/1234 patch for select on hover, but it doesn't work
-# when I click window/output menu option, looks like it registers my double click as I'm choose window.
+# When I click window/output menu option, looks like it registers my double click as I'm choose window.
 # I opened issue https://github.com/lbonn/rofi/issues/19. Quick fix for this issue is to add sleep 0.1
 # before action.
-CHOICE=`rofi -hover-select -me-select-entry '' -me-accept-entry 'MousePrimary' -dmenu -p "How to make a screenshot?" << EOF
+CHOICE=`rofi -dmenu -p "How to make a screenshot?" << EOF
  Screenshot Fullscreen
  Screenshot Focused
  Screenshot Selected Window
  Screenshot Selected Output
  Screenshot Region
+ Read QR-code
+--------------------------
  Record Focused
  Record Selected Window
  Record Selected Output
@@ -60,6 +60,9 @@ case $(echo $CHOICE | cut -c 5- | tr '[:upper:]' '[:lower:]') in
     "screenshot region")
         slurp | grim -g - "$FILENAME"
         REC=0 ;;
+    "read qr-code")
+        wl-copy $(slurp | grim -g - - | zbarimg -q --raw -)
+        REC=2 ;;
     "screenshot selected output")
         echo "$OUTPUTS" | slurp | grim -g - "$FILENAME"
         REC=0 ;;
@@ -95,5 +98,9 @@ case $REC in
     1)
         notify-send "Recording" "Recording stopped: $RECORDING" -t 6000
         wl-copy < $RECORDING
+        ;;
+    2)
+        qr=$(wl-paste)
+        notify-send "QR-code" "QR-code successfully read and copied to clipboard:\n$qr" -t 6000
         ;;
 esac
