@@ -141,9 +141,10 @@
       "Paused": " "
     },
     "max-length":70,
-    "exec": "playerctl metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{playerName}} : {{title}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "exec": "playerctl metadata -p playerctld --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{playerName}} : {{title}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
     "on-click": "playerctl play-pause",
     "on-scroll-down": "playerctl next",
-    "on-scroll-up": "playerctl previous"
+    "on-scroll-up": "playerctl previous",
+    "on-click-right": "playerctld shift"
   }
 }
