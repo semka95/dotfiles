@@ -186,13 +186,13 @@ bindsym Control+Shift+Space exec makoctl dismiss --all
 
 bindsym --locked {
     # Multimedia
-    XF86AudioRaiseVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
-    XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
-    $mod+F11 exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
-    $mod+F12 exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
+    XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    $mod+F11 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    $mod+F12 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
     $mod+Shift+F11 exec playerctl volume 0.05-
     $mod+Shift+F12 exec playerctl volume 0.05+
-    XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+    XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
     $mod+F6 exec playerctl play-pause
     $mod+F7 exec playerctl previous
     $mod+F8 exec playerctl next
