@@ -17,6 +17,9 @@ export PATH="${PATH}:$GOPATH/bin"
 export PATH="$HOME/.radicle/bin:$PATH"
 
 alias ssh="kitty +kitten ssh"
+alias cat="bat"
+alias du="dust"
+alias df="duf"
 
 # Antigen
 source ~/antigen.zsh
@@ -28,15 +31,11 @@ antigen bundle git
 antigen bundle command-not-found
 antigen bundle docker
 antigen bundle docker-compose
-antigen bundle golang
-antigen bundle heroku
-antigen bundle httpie
-antigen bundle kubectl
 
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zdharma-continuum/fast-syntax-highlighting
 
 antigen theme borekb/agkozak-zsh-theme@prompt-customization
-#antigen theme denysdovhan/spaceship-prompt
 
 antigen apply
