@@ -50,6 +50,7 @@ assign [app_id="lagrange"] $ws5
 assign [app_id="firefox"] $wsF1
 
 assign [app_id="devdocs-desktop"] $wsF2
+assign [app_id="ghostwriter"] $wsF2
 
 assign [class="^Spotify$"] $wsF3
 assign [instance="^freezer$"] $wsF3
