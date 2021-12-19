@@ -1,0 +1,101 @@
+configuration {
+	font:							"mono 12";
+}
+
+@import "colors.rasi"
+
+window {
+    background-color:               @background;
+    text-color:                     @foreground;
+}
+
+mainbox {
+    background-color:               @background;
+	border:							1px;
+    border-radius:                  5px;
+	border-color:					@border;
+    children:                       [ inputbar, message, listview ];
+    spacing:                       	0%;
+}
+
+
+inputbar {
+	spacing:                        0px;
+    children:                       [ prompt, entry ];
+    background-color:               @background;
+    text-color:                     @foreground;
+}
+
+
+prompt {
+    enabled: 						true;
+    padding:                        8px 10px;
+	background-color: 				@border;
+	text-color: 					@background;
+}
+
+entry {
+    background-color:               @background;
+    text-color:                     @foreground;
+    placeholder-color:              @inactive-foreground;
+    padding:                        8px 10px;
+    blink:                          true;
+}
+
+
+message {
+    padding:                        6px 10px;
+}
+textbox {
+    text-color:       				@foreground;
+    border:					        1px dash 0;
+    border-color:                   @border;
+    padding:                        0 0 3px 0;
+}
+
+
+listview {
+    fixed-height:                   false;
+    dynamic:                        true;
+    scrollbar:                      false;
+    spacing:                        0px;
+    margin:                         5px 0 0 0;
+    padding:                        5px 10px;
+    background:                     @background;
+    border:					        1px dash 0 0 0;
+    border-color:                   @border;
+}
+
+element {
+    padding:                        2px 15px;
+    spacing:                        3px;
+}
+
+element-icon {
+    enabled:                        false;
+}
+
+element normal.normal {
+    background-color:               @background;
+}
+element-text normal.normal {
+    text-color:                     @foreground;
+}
+
+element selected.normal {
+    background-color:               @selected-normal-background;
+    text-color:                     @selected-normal-foreground;
+}
+element-text selected.normal {
+    background-color:               @selected-normal-background;
+    text-color:                     @background;
+}
+
+element alternate.normal {
+    background-color:               @inactive-foreground;
+    text-color:                     @background;
+}
+element-text alternate.normal {
+    background-color:               @inactive-foreground;
+    text-color:                     @foreground;
+}
