@@ -38,7 +38,9 @@ CHOICE=`rofi -dmenu -p "How to make a screenshot?" << EOF
  Screenshot Selected Window
  Screenshot Selected Output
  Screenshot Region
+--------------------------
  Read QR-code
+ Recognize Text
 --------------------------
  Record Focused
  Record Selected Window
@@ -63,6 +65,9 @@ case $(echo $CHOICE | cut -c 5- | tr '[:upper:]' '[:lower:]') in
     "read qr-code")
         wl-copy $(slurp | grim -g - - | zbarimg -q --raw -)
         REC=2 ;;
+    "recognize text")
+        wl-copy -n $(slurp | grim -g - - | tesseract - - -l eng+rus | rev | cut -c 2- | rev)
+        REC=3 ;;
     "screenshot selected output")
         echo "$OUTPUTS" | slurp | grim -g - "$FILENAME"
         REC=0 ;;
@@ -102,5 +107,8 @@ case $REC in
     2)
         qr=$(wl-paste)
         notify-send "QR-code" "QR-code successfully read and copied to clipboard:\n$qr" -t 6000
+        ;;
+    3)
+        notify-send "Tesseract" "Text recognized and copied" -t 6000
         ;;
 esac
