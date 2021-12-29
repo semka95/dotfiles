@@ -31,8 +31,8 @@ CLR_RESULT="#ebdbb2" # text color for translation
 CLR1="#b8bb26"
 CLR2="#1d2021"
 
-HIST="~/.local/share/rofi/rofitr_history"
-mkdir -p "$HIST"
+HIST=~/.local/share/rofi/rofitr_history
+mkdir -p ~/.local/share/rofi/
 
 help() {
 cat <<EOF
