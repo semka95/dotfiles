@@ -17,7 +17,6 @@ export PATH="${PATH}:$GOPATH/bin"
 export PATH="$HOME/.radicle/bin:$PATH"
 
 alias ssh="kitty +kitten ssh"
-alias cat="bat"
 alias du="dust"
 alias df="duf"
 
