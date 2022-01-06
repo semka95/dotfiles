@@ -33,20 +33,20 @@ fi
 # I opened issue https://github.com/lbonn/rofi/issues/19. Quick fix for this issue is to add sleep 0.1
 # before action.
 CHOICE=`rofi -dmenu -p "How to make a screenshot?" << EOF
- Screenshot Fullscreen
- Screenshot Focused
- Screenshot Selected Window
- Screenshot Selected Output
- Screenshot Region
+󰆟 Screenshot Fullscreen
+󰛐 Screenshot Focused
+󰖯 Screenshot Selected Window
+󰹑 Screenshot Selected Output
+󰆞 Screenshot Region
 --------------------------
- Read QR-code
- Recognize Text
+󰐲 Read QR-code
+󰊄 Recognize Text
 --------------------------
- Record Focused
- Record Selected Window
- Record Selected Output
- Record Region
- Screenshare
+󰛐 Record Focused
+󰖯 Record Selected Window
+󰹑 Record Selected Output
+󰆞 Record Region
+󰤲 Screenshare
 EOF`
 
 sleep 0.1

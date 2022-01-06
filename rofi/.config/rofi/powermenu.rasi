@@ -1,5 +1,5 @@
 configuration {
-	font:							"Sans 12";
+	font:							"sans 12";
     show-icons:                     false;
     drun-display-format:            "{name}";
     disable-history:                false;
@@ -26,7 +26,7 @@ prompt {
     padding:                        0.5% 0.5% 0.5% 0%;
 	background-color: 				@inactive-foreground;
 	text-color: 					@foreground;
-	font:							"Sans 12";
+	font:							"sans 12";
 }
 
 textbox-prompt-colon {
@@ -77,7 +77,7 @@ element {
 element-text {
     background-color: 				#00000000;
     text-color:       				inherit;
-	font:							"Sans 32";
+	font:							"sans 32";
     horizontal-align:               0.5;
     vertical-align:                 0.5;
     margin:                         4.5% 2.7%;

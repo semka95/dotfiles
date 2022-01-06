@@ -6,10 +6,10 @@ tooltip=""
 checkIfRunning() {
     if pgrep -x gammastep >/dev/null 2>&1
     then
-        icon=""
+        icon="󰛩"
         tooltip="Gammastep is ON"
     else
-        icon=""
+        icon="󰌶"
         tooltip="Gammastep is OFF"
     fi
 }
@@ -18,7 +18,7 @@ changeModeToggle() {
   checkIfRunning
   if [ "$tooltip" == "Gammastep is ON" ]
   then
-    icon=""
+    icon="󰌶"
     tooltip="Gammastep is OFF"
     # If you want to activate fade=1 in gammastep config, you have to add --wait flag to
     # killall, without this flag icon/tooltip will not refresh when you turning off gammastep.
@@ -31,7 +31,7 @@ changeModeToggle() {
     killall -q gammastep
     pkill -SIGRTMIN+12 waybar
   else
-    icon=""
+    icon="󰛩"
     tooltip="Gammastep is ON"
     gammastep &
     pkill -SIGRTMIN+12 waybar

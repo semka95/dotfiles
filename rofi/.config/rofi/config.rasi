@@ -1,8 +1,8 @@
 configuration {
-	font:							"Sans 12";
+	font:							"sans 12";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
-    display-drun: 					"";
+    display-drun: 					"󰍉";
     disable-history:                false;
 	sidebar-mode: 					false;
     me-select-entry:                "";
@@ -24,7 +24,7 @@ prompt {
     enabled: 						true;
 	background-color: 				@background;
 	text-color: 					@foreground;
-	font:							"Sans 14";
+	font:							"sans 14";
 }
 
 entry {

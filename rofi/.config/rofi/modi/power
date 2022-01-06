@@ -1,10 +1,10 @@
 #!/bin/sh
 
-lock=""
-logout=""
-suspend=""
-reboot=""
-shutdown=""
+lock="󰍁"
+logout="󰍃"
+suspend="󰒲"
+reboot="󰓦"
+shutdown="󰐥"
 entries="$lock\n$logout\n$suspend\n$reboot\n$shutdown"
 
 theme="$HOME/.config/rofi/powermenu.rasi"
@@ -13,14 +13,14 @@ uptime=$(uptime -p | sed -e 's/up //g')
 selected=$(echo -en $entries | rofi -theme $theme -dmenu -p "Uptime: $uptime" -i)
 
 case $selected in
-  )
+  󰍁)
     exec ~/.local/bin/scripts/lock.sh;;
-  )
+  󰍃)
     swaymsg exit;;
-  )
+  󰒲)
     exec systemctl suspend;;
-  )
+  󰓦)
     exec systemctl reboot;;
-  )
+  󰐥)
     exec systemctl poweroff -i;;
 esac

@@ -24,9 +24,9 @@ THEME="$HOME/.config/rofi/rofitr.rasi"
 ## Rofi required options
 HIST_LINES="15" # lines to show for history mode
 RES_LINES="42"  # limit output to screen height
-PROMPT_TR=" translate"
-PROMPT_HIST=" history"
-PROMPT_DEL=" delete"
+PROMPT_TR="󰊿 translate"
+PROMPT_HIST="󰋚 history"
+PROMPT_DEL="󰩺 delete"
 CLR_RESULT="#ebdbb2" # text color for translation
 CLR1="#b8bb26"
 CLR2="#1d2021"
@@ -154,7 +154,7 @@ while [ -n "$input" ]; do
 			result=$(SPEAK_SOURCE="true" crow_cmd -- "$input" | format sel)
 			append_hist; return_result ;;
 		-s)
-			input=$(xclip -o | tr -d '\n'); [ -z "$input" ] && exit
+			input=$(wl-paste -p | tr -d '\n'); [ -z "$input" ] && exit
 			result=$(crow_cmd -t "${TARGET:-tr}" -- "$input" | format)
 			append_hist; return_result ;;
 		*)

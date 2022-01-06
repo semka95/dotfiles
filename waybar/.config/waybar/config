@@ -1,7 +1,7 @@
 {
   "layer": "bottom",
   "position": "top",
-  "height": 26,
+  "height": 30,
   "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
   "modules-right": [
     "custom/media",
@@ -20,7 +20,7 @@
     "clock"
   ],
   "sway/mode": {
-    "format": " {}"
+    "format": ">> {}"
   },
   "sway/workspaces": {
     "format": "{name}",
@@ -38,23 +38,23 @@
     "tooltip": false
   },
   "cpu": {
-    "format": "{usage}% ",
+    "format": "{usage}% 󰘚",
     "tooltip": false
   },
   "memory": {
-    "format": "{}% "
+    "format": "{}% 󰍛"
   },
   "temperature": {
     "critical-threshold": 80,
     "format": "{temperatureC}°C {icon}",
-    "format-icons": ["", "", ""],
+    "format-icons": ["󱃃", "󰔏", "󱃂"],
     "tooltip": false
   },
   "battery": {
     "format": "{capacity}% {icon}",
     "format-alt": "{time} {icon}",
-    "format-icons": ["", "", "", "", ""],
-    "format-charging": "{capacity}% ",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-charging": "{capacity}% 󰂄",
     "interval": 30,
     "states": {
       "warning": 25,
@@ -64,35 +64,35 @@
   },
   "network": {
     "format": "{icon}",
-    "format-alt": "{ipaddr}   {bandwidthDownBits}   {bandwidthUpBits}",
+    "format-alt": "{ipaddr} | {bandwidthDownBits}󱦳 {bandwidthUpBits}󱦲",
     "interval": 1,
     "format-alt-click": "click-right",
     "format-icons": {
-      "wifi": ["", "", ""],
-      "ethernet": [""],
-      "disconnected": [""]
+      "wifi": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+      "ethernet": ["󰈁"],
+      "disconnected": ["󰤮"]
     },
     "on-click": "kitty --class nmwui nmtui-connect",
     "tooltip-format-wifi": "{essid} {frequency}",
-    "tooltip-format-ethernet": "{bandwidthDownBits}   {bandwidthUpBits}"
+    "tooltip-format-ethernet": "{bandwidthDownBits}󱦳 {bandwidthUpBits}󱦲"
   },
   "pulseaudio": {
     "format": "{volume}% {icon}",
     "format-alt": "{icon}",
     "format-alt-click": "click-right",
-    "format-muted": "",
+    "format-muted": "󰝟",
     "format-icons": {
-      "phone": [" ", " ", " ", " "],
-      "default": ["", "", "", ""]
+      "default": ["󰕿", "󰖀", "󰕾"]
     },
     "scroll-step": 5,
     "on-click": "pavucontrol",
+    "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "tooltip": false
   },
   "pulseaudio#mic": {
     "format": "{format_source}",
-    "format-source": "",
-    "format-source-muted": "",
+    "format-source": "󰍬",
+    "format-source-muted": "󰍭",
     "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
     "tooltip": false
   },
@@ -100,7 +100,7 @@
     "format": "{icon}",
     "format-alt": "{percent}% {icon}",
     "format-alt-click": "click-right",
-    "format-icons": ["", ""],
+    "format-icons": ["󰌶", "󰛩"],
     "on-scroll-down": "light -A 1",
     "on-scroll-up": "light -U 1"
   },
@@ -137,8 +137,8 @@
     "format": "{icon}{}",
     "return-type": "json",
     "format-icons": {
-      "Playing": " ",
-      "Paused": " "
+      "Playing": "󰏤 ",
+      "Paused": "󰐊 "
     },
     "max-length":70,
     "exec": "playerctl metadata -p playerctld --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{playerName}} : {{title}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",

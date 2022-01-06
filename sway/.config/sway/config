@@ -19,16 +19,16 @@ set $screenshot ~/.local/bin/scripts/screenshot.sh
 set $translate ~/.config/rofi/modi/rofitr
 
 # Workspaces
-set $ws1   1:
-set $ws2   2:
-set $ws3   3:
-set $ws4   4:
-set $ws5   5:
-set $wsF1  6:
-set $wsF2  7:
-set $wsF3  8:
-set $wsF4  9:
-set $wsF5  10:
+set $ws1   1:󰞷
+set $ws2   2:󰗀
+set $ws3   3:󰍥
+set $ws4   4:󰉕
+set $ws5   5:󰇰
+set $wsF1  6:󰈹
+set $wsF2  7:󰧮
+set $wsF3  8:󰝚
+set $wsF4  9:󰎛
+set $wsF5  10:󰲷
 
 # Default workspaces for common programs
 assign [instance="^jetbrains-goland$"] $ws2
@@ -173,7 +173,7 @@ bindsym --to-code {
     $mod+Escape exec $power
 
     $mod+t exec $translate
-    $mod+Shift+t exec $translate $(wl-paste -p)
+    $mod+Shift+t exec $translate -s
 }
 
 # Drag floating windows by holding down $mod and left mouse button.

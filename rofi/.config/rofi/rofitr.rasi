@@ -1,5 +1,5 @@
 configuration {
-	font:							"mono 12";
+	font:							"monospace 12";
 }
 
 @import "colors.rasi"
