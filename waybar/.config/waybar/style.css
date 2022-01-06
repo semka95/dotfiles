@@ -1,66 +1,13 @@
+@import "colors-waybar.css";
+
 * {
   border: none;
   border-radius: 0;
-  font-family: Sans;
+  font-family: JetBrains Mono;
   font-size: 13px;
   box-shadow: none;
   text-shadow: none;
   transition-duration: 0s;
-}
-window.HDMI-A-2 * {
-  font-size: 11px;
-}
-
-window.HDMI-A-2 #mode,
-window.HDMI-A-2 #workspaces,
-window.HDMI-A-2 #window,
-window.HDMI-A-2 #battery,
-window.HDMI-A-2 #cpu,
-window.HDMI-A-2 #memory,
-window.HDMI-A-2 #network,
-window.HDMI-A-2 #pulseaudio,
-window.HDMI-A-2 #language,
-window.HDMI-A-2 #custom-spotify,
-window.HDMI-A-2 #custom-weather,
-window.HDMI-A-2 #custom-gammastep,
-window.HDMI-A-2 #clock,
-window.HDMI-A-2 #temperature,
-window.HDMI-A-2 #tray,
-window.HDMI-A-2 #custom-bluetooth,
-window.HDMI-A-2 #custom-media {
-  margin: 0px 11px 0px 0px;
-}
-
-window {
-  color: rgba(217, 216, 216, 1);
-  background: rgba(35, 31, 32, 0);
-}
-
-window#waybar.solo {
-  color: rgba(217, 216, 216, 1);
-  background: rgba(35, 31, 32, 0.85);
-}
-
-#workspaces {
-  margin: 0 5px;
-}
-
-#workspaces button {
-  padding: 0 5px;
-  color: rgba(217, 216, 216, 0.4);
-  box-shadow: inset 0 -2px transparent;
-}
-
-#workspaces button.visible {
-  color: rgba(217, 216, 216, 1);
-}
-
-#workspaces button.focused {
-  box-shadow: inset 0 -2px #ffffff;
-}
-
-#workspaces button.urgent {
-  color: rgba(238, 46, 36, 1);
 }
 
 #mode,
@@ -82,26 +29,90 @@ window#waybar.solo {
   margin: 0px 14px 0px 0px;
 }
 
+window.HDMI-A-2 * {
+  font-size: 11px;
+}
+
+window.HDMI-A-2 #mode,
+window.HDMI-A-2 #workspaces,
+window.HDMI-A-2 #window,
+window.HDMI-A-2 #battery,
+window.HDMI-A-2 #cpu,
+window.HDMI-A-2 #memory,
+window.HDMI-A-2 #network,
+window.HDMI-A-2 #pulseaudio,
+window.HDMI-A-2 #language,
+window.HDMI-A-2 #custom-spotify,
+window.HDMI-A-2 #custom-weather,
+window.HDMI-A-2 #custom-gammastep,
+window.HDMI-A-2 #clock,
+window.HDMI-A-2 #temperature,
+window.HDMI-A-2 #tray,
+window.HDMI-A-2 #custom-bluetooth,
+window.HDMI-A-2 #custom-media {
+  margin: 2px 11px 0px 0px;
+}
+
+
+window {
+  color: @foreground;
+  background: alpha(@background, 0.8);
+}
+window#waybar.solo {
+  color: @foreground;
+  background: @background;
+}
+window#waybar.empty {
+  color: @foreground;
+  background: alpha(@background, 0.7);
+}
+
+
+#workspaces {
+  margin: 0 5px;
+}
+#workspaces button {
+  padding: 0 5px;
+  color: alpha(@foreground, 0.4);
+  box-shadow: inset 0 -2px transparent;
+}
+#workspaces button.visible {
+  color: @foreground;
+}
+#workspaces button.focused {
+  box-shadow: inset 0 -2px @color5;
+}
+#workspaces button:hover {
+  background: shade(@color0, 0.9);
+}
+#workspaces button.urgent {
+  color: @color1;
+}
+
+
 #battery.warning {
-  color: rgba(255, 210, 4, 1);
+  color: @color3;
 }
-
 #battery.critical {
-  color: rgba(238, 46, 36, 1);
+  color: @color1;
+}
+#battery.charging {
+  color: @color6;
 }
 
-#battery.charging {
-  color: rgb(0, 255, 21);
-}
 
 #temperature.critical {
-  color: rgba(238, 46, 36, 1);
+  color: @color1;
 }
+
 
 #pulseaudio.mic {
-  color: rgba(238, 46, 36, 1);
+  color: @color1;
+}
+#pulseaudio.mic.source-muted {
+  color: @foreground;
 }
 
-#pulseaudio.mic.source-muted {
-  color: rgba(217, 216, 216, 1);
+#custom-bluetooth {
+  color: @color4;
 }

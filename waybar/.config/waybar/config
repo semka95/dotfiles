@@ -34,7 +34,7 @@
     "tooltip": false
   },
   "clock": {
-    "format": "{:%a  %d.%m  %H:%M}",
+    "format": "{:%a %d.%m %H:%M}",
     "tooltip": false
   },
   "cpu": {
@@ -130,7 +130,7 @@
     "tooltip": false
   },
   "tray": {
-    "icon-size": 18,
+    "icon-size": 15,
     "spacing": 14
   },
   "custom/media": {
