@@ -148,7 +148,8 @@ input type:touchpad {
 for_window [title="^Authentication required$"] floating enable
 for_window [title="^Картинка в картинке$"] floating enable, resize set 367 207 px, sticky enable
 for_window [app_id="^xdg-desktop-portal-gtk$"] floating enable
-for_window [app_id="nmwui"] floating enable, resize set 550 650 px,
+for_window [app_id="nmwui"] floating enable, resize set 550 650 px
+for_window [app_id="org.kde.polkit-kde-authentication-agent-1"] floating enable, resize set 550 250 px
 
 ### Key bindings
 bindsym $mod+Return exec $term
