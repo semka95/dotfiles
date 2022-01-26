@@ -55,41 +55,41 @@ mkdir -p $TARGET
 FILENAME="$TARGET/$(date +'%Y-%m-%d_%Hh%Mm%Ss_screenshot.png')"
 RECORDING="$TARGET/$(date +'%Y-%m-%d_%Hh%Mm%Ss_recording.mp4')"
 
-case $(echo $CHOICE | cut -c 5- | tr '[:upper:]' '[:lower:]') in
-    "screenshot fullscreen")
+case "$CHOICE" in
+    "󰆟 Screenshot Fullscreen")
         grim "$FILENAME"
         REC=0 ;;
-    "screenshot region")
+    "󰆞 Screenshot Region")
         slurp | grim -g - "$FILENAME"
         REC=0 ;;
-    "read qr-code")
+    "󰐲 Read QR-code")
         wl-copy $(slurp | grim -g - - | zbarimg -q --raw -)
         REC=2 ;;
-    "recognize text")
+    "󰊄 Recognize Text")
         wl-copy -n $(slurp | grim -g - - | tesseract - - -l eng+rus | rev | cut -c 2- | rev)
         REC=3 ;;
-    "screenshot selected output")
+    "󰹑 Screenshot Selected Output")
         echo "$OUTPUTS" | slurp | grim -g - "$FILENAME"
         REC=0 ;;
-    "screenshot selected window")
+    "󰖯 Screenshot Selected Window")
         echo "$WINDOWS" | slurp | grim -g - "$FILENAME"
         REC=0 ;;
-    "screenshot focused")
+    "󰛐 Screenshot Focused")
         grim -g "$(eval echo $FOCUSED)" "$FILENAME"
         REC=0 ;;
-    "record selected output")
+    "󰹑 Record Selected Output")
         $RECORDER -g "$(echo "$OUTPUTS"|slurp)" -f "$RECORDING"
         REC=1 ;;
-    "record selected window")
+    "󰖯 Record Selected Window")
         $RECORDER -g "$(echo "$WINDOWS"|slurp)" -f "$RECORDING"
         REC=1 ;;
-    "record region")
+    "󰆞 Record Region")
         $RECORDER -g "$(slurp)" -f "$RECORDING"
         REC=1 ;;
-    "record focused")
+    "󰛐 Record Focused")
         $RECORDER -g "$(eval echo $FOCUSED)" -f "$RECORDING"
         REC=1 ;;
-    "screenshare")
+    "󰤲 Screenshare")
         screenshareToggle ;;
     *)
         grim -g "$(eval echo $CHOICE)" "$FILENAME" ;;
@@ -106,7 +106,7 @@ case $REC in
         ;;
     2)
         qr=$(wl-paste)
-        notify-send "QR-code" "QR-code successfully read and copied to clipboard:\n$qr" -t 6000
+        notify-send "QR-code" "QR-code successfully read and copied to clipboard: <i>$qr</i>" -t 6000
         ;;
     3)
         notify-send "Tesseract" "Text recognized and copied" -t 6000
