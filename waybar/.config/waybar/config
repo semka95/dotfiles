@@ -64,6 +64,8 @@
   },
   "network": {
     "format": "{icon}",
+    // temp fix, auto detection not working, see #1392 issue
+    "interface": "enp0s20f0u4u3",
     "format-alt": "{ipaddr} | {bandwidthDownBits}󱦳 {bandwidthUpBits}󱦲",
     "interval": 1,
     "format-alt-click": "click-right",
@@ -130,7 +132,7 @@
     "tooltip": false
   },
   "tray": {
-    "icon-size": 15,
+    "icon-size": 14,
     "spacing": 14
   },
   "custom/media": {
