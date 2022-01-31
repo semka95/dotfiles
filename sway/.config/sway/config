@@ -35,6 +35,7 @@ assign [instance="^jetbrains-goland$"] $ws2
 assign [instance="^code$"] $ws2
 
 assign [app_id="telegramdesktop"] $ws3
+assign [app_id=".*Telegram_Desktop"] $ws3
 assign [app_id="net.sourceforge.mumble.mumble"] $ws3
 assign [instance="^element$"] $ws3
 assign [instance="^discord$"] $ws3
