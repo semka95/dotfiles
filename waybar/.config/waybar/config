@@ -111,6 +111,7 @@
     "format-alt": "{alt}: {}",
     "format-alt-click": "click-right",
     "interval": 1800,
+    "max-length": 22,
     "return-type": "json",
     "exec": "~/.config/waybar/modules/weather.sh",
     "exec-if": "ping wttr.in -c1"

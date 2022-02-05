@@ -24,21 +24,21 @@ IFS=$'\n'
     flock -x 3
     cacheage=$(($(date +%s) - $(stat -c '%Y' "$cachedir/$cachefile")))
     if [ $cacheage -gt 1750 ] || [ ! -s $cachedir/$cachefile ]; then
-        data=($(curl -s https://en.wttr.in/$LOCATION\?0qnT 2>&1))
+        data=($(curl -s https://en.wttr.in/$LOCATION\?0QnT 2>&1))
 
-        echo ${data[0]} | cut -f1 -d, > $cachedir/$cachefile
+        echo $LOCATION_NAME > $cachedir/$cachefile
 
+        echo ${data[0]} | sed -e 's/^\(.\{14\}\).*/\1/' | cut -c 4- >> $cachedir/$cachefile
         echo ${data[1]} | sed -e 's/^\(.\{14\}\).*/\1/' | cut -c 4- >> $cachedir/$cachefile
         echo ${data[2]} | sed -e 's/^\(.\{14\}\).*/\1/' | cut -c 4- >> $cachedir/$cachefile
         echo ${data[3]} | sed -e 's/^\(.\{14\}\).*/\1/' | cut -c 4- >> $cachedir/$cachefile
         echo ${data[4]} | sed -e 's/^\(.\{14\}\).*/\1/' | cut -c 4- >> $cachedir/$cachefile
-        echo ${data[5]} | sed -e 's/^\(.\{14\}\).*/\1/' | cut -c 4- >> $cachedir/$cachefile
 
+        echo ${data[0]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
         echo ${data[1]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
         echo ${data[2]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
         echo ${data[3]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
         echo ${data[4]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
-        echo ${data[5]} | sed -E 's/^.{16}//' >> $cachedir/$cachefile
     fi
 
     weather=($(cat $cachedir/$cachefile))
@@ -50,35 +50,32 @@ IFS=$SAVEIFS
 temperatureShort=$(echo ${weather[7]} | sed -E 's/(\(-?[0-9]+\)\s)//g')
 
 # https://fontawesome.com/icons?s=solid&c=weather
-case $(echo ${weather[6]##*,} | tr '[:upper:]' '[:lower:]') in
+case $(echo ${weather[6]%%,*} | tr '[:upper:]' '[:lower:]') in
 "clear" | "sunny")
     condition="󰖙"
     ;;
 "partly cloudy")
     condition="󰖕"
     ;;
-"cloudy")
+"cloudy" | "overcast")
     condition="󰖐"
     ;;
-"overcast")
-    condition="󰖐"
-    ;;
-"mist" | "fog" | "freezing fog")
+"mist" | "fog" | "freezing fog" | "patches of fog" | "shallow fog")
     condition="󰖑"
     ;;
-"patchy rain possible" | "patchy light drizzle" | "light drizzle" | "patchy light rain" | "light rain" | "light rain shower" | "rain")
+"patchy rain possible" | "drizzle" | "patchy light drizzle" | "light drizzle" | "patchy light rain" | "light rain" | "light rain shower" | "rain")
     condition="󰖗"
     ;;
 "moderate rain at times" | "moderate rain" | "heavy rain at times" | "heavy rain" | "moderate or heavy rain shower" | "torrential rain shower" | "rain shower")
     condition="󰖖"
     ;;
-"patchy snow possible" | "patchy sleet possible" | "patchy freezing drizzle possible" | "freezing drizzle" | "heavy freezing drizzle" | "light freezing rain" | "moderate or heavy freezing rain" | "light sleet" | "ice pellets" | "light sleet showers" | "moderate or heavy sleet showers" | "snow grains")
+"patchy sleet possible" | "patchy freezing drizzle possible" | "freezing drizzle" | "heavy freezing drizzle" | "freezing rain" | "light freezing rain" | "moderate or heavy freezing rain" | "light sleet" | "ice pellets" | "light sleet showers" | "moderate or heavy sleet showers" | "snow grains" | "light rain and snow")
     condition="󰼵"
     ;;
-"blowing snow" | "moderate or heavy sleet" | "patchy light snow" | "light snow" | "light snow showers")
+"moderate or heavy sleet" | "patchy light snow" | "light snow" | "light snow showers" | "patchy snow possible")
     condition="󰖘"
     ;;
-"snow" | "blizzard" | "patchy moderate snow" | "moderate snow" | "patchy heavy snow" | "heavy snow" | "moderate or heavy snow with thunder" | "moderate or heavy snow showers")
+"snow" | "low drifting snow " | "blizzard" | "patchy moderate snow" | "moderate snow" | "patchy heavy snow" | "heavy snow" | "moderate or heavy snow with thunder" | "moderate or heavy snow showers" | "blowing snow" | "snow shower" | "heave snow shower")
     condition="󰼶"
     ;;
 "thundery outbreaks possible" | "patchy light rain with thunder" | "moderate or heavy rain with thunder" | "patchy light snow with thunder")
