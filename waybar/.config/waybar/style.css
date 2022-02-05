@@ -3,7 +3,7 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: monospace, "Material Design Icons";
+  font-family: monospace;
   font-size: 14px;
   box-shadow: none;
   text-shadow: none;
@@ -53,7 +53,6 @@ window.HDMI-A-2 #custom-media {
   margin: 2px 11px 0px 0px;
 }
 
-
 window {
   color: @foreground;
   background: alpha(@background, 0.8);
@@ -66,7 +65,6 @@ window#waybar.empty {
   color: @foreground;
   background: alpha(@background, 0.7);
 }
-
 
 #workspaces {
   margin: 0 5px;
@@ -89,7 +87,6 @@ window#waybar.empty {
   color: @color1;
 }
 
-
 #battery.warning {
   color: @color3;
 }
@@ -100,11 +97,9 @@ window#waybar.empty {
   color: @color6;
 }
 
-
 #temperature.critical {
   color: @color1;
 }
-
 
 #pulseaudio.mic {
   color: @color1;
