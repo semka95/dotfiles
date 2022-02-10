@@ -69,10 +69,10 @@ case $(echo ${weather[6]%%,*} | tr '[:upper:]' '[:lower:]') in
 "moderate rain at times" | "moderate rain" | "heavy rain at times" | "heavy rain" | "moderate or heavy rain shower" | "torrential rain shower" | "rain shower")
     condition="󰖖"
     ;;
-"patchy sleet possible" | "patchy freezing drizzle possible" | "freezing drizzle" | "heavy freezing drizzle" | "freezing rain" | "light freezing rain" | "moderate or heavy freezing rain" | "light sleet" | "ice pellets" | "light sleet showers" | "moderate or heavy sleet showers" | "snow grains" | "light rain and snow")
+"patchy sleet possible" | "patchy freezing drizzle possible" | "freezing drizzle" | "heavy freezing drizzle" | "freezing rain" | "light freezing rain" | "moderate or heavy freezing rain" | "light sleet" | "ice pellets" | "light sleet showers" | "moderate or heavy sleet showers" | "snow grains" | "light rain and snow" | "light snow shower")
     condition="󰼵"
     ;;
-"moderate or heavy sleet" | "patchy light snow" | "light snow" | "light snow showers" | "patchy snow possible")
+"moderate or heavy sleet" | "patchy light snow" | "light snow" | "patchy snow possible" | "light snow showers")
     condition="󰖘"
     ;;
 "snow" | "low drifting snow " | "blizzard" | "patchy moderate snow" | "moderate snow" | "patchy heavy snow" | "heavy snow" | "moderate or heavy snow with thunder" | "moderate or heavy snow showers" | "blowing snow" | "snow shower" | "heave snow shower")
