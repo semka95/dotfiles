@@ -157,7 +157,7 @@ bindsym $mod+Return exec $term
 
 # have to install modified sway - https://aur.archlinux.org/packages/sway-mask-modifiers-git
 # because of the issue https://github.com/swaywm/sway/issues/6456
-bindsym --no-repeat --mask-modifiers --whole-window button9 exec dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.startTalking                                                     
+bindsym --no-repeat --mask-modifiers --whole-window button9 exec dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.startTalking
 bindsym --no-repeat --mask-modifiers --whole-window --release button9 exec dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.stopTalking 
 
 bindsym Print exec $screenshot
@@ -203,6 +203,12 @@ bindsym --locked {
     $mod+F6 exec playerctl play-pause
     $mod+F7 exec playerctl previous
     $mod+F8 exec playerctl next
+    
+    # Bluetooth headset
+    XF86AudioPlay exec playerctl play-pause
+    XF86AudioPause exec playerctl play-pause
+    XF86AudioPrev exec playerctl previous
+    XF86AudioNext exec playerctl next
 
     # Brightness controls
     XF86MonBrightnessUp exec brightnessctl s 10%+
