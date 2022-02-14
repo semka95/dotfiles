@@ -49,7 +49,6 @@ IFS=$SAVEIFS
 
 temperatureShort=$(echo ${weather[7]} | sed -E 's/(\(-?[0-9]+\)\s)//g' | tr -d '[:space:]')
 
-# https://fontawesome.com/icons?s=solid&c=weather
 case $(echo ${weather[6]%%,*} | tr '[:upper:]' '[:lower:]') in
 "clear" | "sunny")
     condition="󰖙"
