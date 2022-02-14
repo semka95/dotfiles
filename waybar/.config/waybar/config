@@ -126,11 +126,17 @@
     "signal": 12
   },
   "custom/bluetooth": {
-    "format": "{}",
-    "interval": 1,
+    "format": "{icon}",
+    "interval": "once",
     "exec": "~/.config/rofi/modi/bluetooth --status",
-    "on-click": "~/.config/rofi/modi/bluetooth &",
-    "tooltip": false
+    "on-click": "~/.config/rofi/modi/bluetooth",
+    "return-type": "json",
+    "format-icons": {
+      "connected": ["󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
+      "on": ["󰂯"],
+      "off": ["󰂲"]
+    },
+    "signal": 11    
   },
   "tray": {
     "icon-size": 14,

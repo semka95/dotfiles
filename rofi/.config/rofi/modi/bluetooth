@@ -182,36 +182,51 @@ toggle_trust() {
     fi
 }
 
+get_battery() {
+   mac=$(echo "$1" | tr : _)
+   # enable experimental mode in /etc/bluetooth/main.conf by setting Experimental = 330859bc-7506-492d-9370-9a6f0614037f
+   # TODO: if there is multiple devices connected, what should I do?
+   echo $(upower -i /org/freedesktop/UPower/devices/headset_dev_"$mac" | grep percentage: | awk '{$1=$1};1' | cut -d ' ' -f 2)
+}
+
 # Prints a short string with the current bluetooth status
 # Useful for status bars like polybar, etc.
 print_status() {
     if power_on; then
-        printf ''
-
         mapfile -t paired_devices < <(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
         counter=0
+        devices=""
+        bat=""
 
         for device in "${paired_devices[@]}"; do
             if device_connected $device; then
                 device_alias=$(bluetoothctl info $device | grep "Alias" | cut -d ' ' -f 2-)
 
                 if [ $counter -gt 0 ]; then
-                    printf ", %s" "$device_alias"
+                    devices+=", $device_alias"
                 else
-                    printf " %s" "$device_alias"
+                    bat+=$(get_battery $device)
+                    devices+="$bat $device_alias"
                 fi
 
                 ((counter++))
             fi
         done
-        printf "\n"
+
+        if [ "$counter" -eq "0" ]; then
+            printf '{"alt":"on", "tooltip":"Power: On"}\n'
+        else
+            bt=$(echo "$bat" | rev | cut -c 2- | rev)
+            printf '{"alt":"connected", "tooltip":"%s", "percentage":%s}\n' "$devices" "$bt"
+        fi
     else
-        echo " Off"
+        printf '{"alt":"off", "tooltip":"Power: Off"}\n'
     fi
 }
 
 # A submenu for a specific device that allows connecting, pairing, and trusting
 device_menu() {
+    pkill -SIGRTMIN+11 waybar
     device=$1
 
     # Get device name and mac address
@@ -253,6 +268,7 @@ device_menu() {
 
 # Opens a rofi menu with current bluetooth status and options to connect
 show_menu() {
+    pkill -SIGRTMIN+11 waybar
     # Get menu options
     if power_on; then
         power="Power: on"
