@@ -68,7 +68,7 @@ case $(echo ${weather[6]%%,*} | tr '[:upper:]' '[:lower:]') in
 "moderate rain at times" | "moderate rain" | "heavy rain at times" | "heavy rain" | "moderate or heavy rain shower" | "torrential rain shower" | "rain shower")
     condition="󰖖"
     ;;
-"patchy sleet possible" | "patchy freezing drizzle possible" | "freezing drizzle" | "heavy freezing drizzle" | "freezing rain" | "light freezing rain" | "moderate or heavy freezing rain" | "light sleet" | "ice pellets" | "light sleet showers" | "moderate or heavy sleet showers" | "snow grains" | "light rain and snow" | "light snow shower")
+"patchy sleet possible" | "patchy freezing drizzle possible" | "freezing drizzle" | "heavy freezing drizzle" | "freezing rain" | "light freezing rain" | "moderate or heavy freezing rain" | "light sleet" | "ice pellets" | "light sleet showers" | "moderate or heavy sleet showers" | "snow grains" | "light rain and snow" | "light snow shower" | "rain and snow shower")
     condition="󰼵"
     ;;
 "moderate or heavy sleet" | "patchy light snow" | "light snow" | "patchy snow possible" | "light snow showers")
