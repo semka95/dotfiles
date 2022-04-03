@@ -1,0 +1,4 @@
+dbusserver: true
+lat: 12.3
+lng: 12.3
+usegeoclue: false

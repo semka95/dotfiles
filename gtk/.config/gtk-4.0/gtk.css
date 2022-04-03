@@ -1,4 +1,4 @@
-/* @import "colors.css"; */
+@import url("colors.css");
 
 /* remove window title from Client-Side Decorations */
 .solid-csd headerbar .title {
@@ -15,5 +15,3 @@ window decoration {
 * {
   text-shadow: none;
 }
-@import "colors.css";
-@import "colors.css";

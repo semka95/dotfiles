@@ -3,3 +3,4 @@ bookmarks
 .env
 spotify/.config/spicetify/Backup/*
 spotify/.config/spicetify/Extracted/*
+darkman/.config/darkman/config.yaml
