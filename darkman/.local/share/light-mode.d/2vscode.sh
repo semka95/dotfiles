@@ -1,3 +1,5 @@
 #!/bin/sh
 
-~/.local/bin/vscode-theme --light
+filepath=~/.config/Code/User/settings.json
+
+sed -i "s|^  \"workbench.colorTheme\":.*|  \"workbench.colorTheme\": \"Capo-Light\",|" $filepath
