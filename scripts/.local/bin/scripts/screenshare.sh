@@ -37,7 +37,7 @@ stop_recording() {
             false
         fi
     elif [ "$1" == "start" ]; then
-        VIDEO_DEVICE="/dev/video0"
+        VIDEO_DEVICE="/dev/video1"
         if ! pgrep wf-recorder > /dev/null; then
             geometry=$(geometry) || exit $?
             wf-recorder --muxer=v4l2 --codec=rawvideo --pixel-format=yuv420p --file="$VIDEO_DEVICE" --geometry="$geometry" &
