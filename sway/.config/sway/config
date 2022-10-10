@@ -67,7 +67,6 @@ assign [instance="^chatterino$"] $wsF5
 assign [app_id="^mpv$"] $wsF5
 
 # Autostart
-exec_always ~/.config/mako/launch.sh
 exec gammastep
 exec telegram-desktop
 exec firefox
