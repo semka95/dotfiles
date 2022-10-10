@@ -76,7 +76,7 @@ exec_always ~/.config/waybar/waybar.sh
 # exec_always pkill kanshi; exec kanshi
 exec wal -R
 exec /usr/lib/kdeconnectd
-# exec easyeffects --gapplication-service
+exec easyeffects --gapplication-service
 exec /usr/lib/polkit-kde-authentication-agent-1
 exec playerctld daemon
 
