@@ -17,7 +17,7 @@
     "custom/bluetooth",
     "network",
     "sway/language",
-    "clock"
+    "custom/notification"
   ],
   "sway/mode": {
     "format": ">> {}"
@@ -155,5 +155,21 @@
     "on-scroll-down": "playerctl next",
     "on-scroll-up": "playerctl previous",
     "on-click-right": "playerctld shift"
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "󰂜",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "󰪑"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
   }
 }
