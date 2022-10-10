@@ -32,7 +32,7 @@ set $wsF5  10:󰲷
 
 # Default workspaces for common programs
 assign [instance="^jetbrains-goland$"] $ws2
-assign [instance="^code$"] $ws2
+assign [app_id="^Code$"] $ws2
 
 assign [app_id="telegramdesktop"] $ws3
 assign [app_id=".*Telegram_Desktop"] $ws3
