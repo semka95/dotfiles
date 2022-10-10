@@ -3,12 +3,13 @@
   "position": "top",
   "height": 30,
   "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+  "modules-center": ["clock"],
   "modules-right": [
     "custom/media",
     "tray",
     "custom/gammastep",
-    "cpu",
-    "memory",
+    // "cpu",
+    // "memory",
     "temperature",
     "custom/weather",
     "pulseaudio",
@@ -27,7 +28,8 @@
     "disable-scroll": true
   },
   "sway/window": {
-    "tooltip": false
+    "tooltip": false,
+    "max-length": 80
   },
   "sway/language": {
     "format": {},
@@ -51,8 +53,8 @@
     "tooltip": false
   },
   "battery": {
-    "format": "{capacity}% {icon}",
-    "format-alt": "{time} {icon}",
+    "format": "{icon}",
+    "format-alt": "{capacity}% {icon}",
     "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     "format-charging": "{capacity}% 󰂄",
     "interval": 30,
@@ -60,12 +62,11 @@
       "warning": 25,
       "critical": 15
     },
-    "tooltip": false
+    "tooltip": true,
+    "tooltip-format": "{capacity}%"
   },
   "network": {
     "format": "{icon}",
-    // temp fix, auto detection not working, see #1392 issue
-    "interface": "enp0s20f0u4u3",
     "format-alt": "{ipaddr} | {bandwidthDownBits}󱦳 {bandwidthUpBits}󱦲",
     "interval": 1,
     "format-alt-click": "click-right",
@@ -87,6 +88,8 @@
       "default": ["󰕿", "󰖀", "󰕾"]
     },
     "scroll-step": 5,
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK",
     "on-click": "pavucontrol",
     "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "tooltip": false
@@ -149,8 +152,8 @@
       "Playing": "󰏤 ",
       "Paused": "󰐊 "
     },
-    "max-length":70,
-    "exec": "playerctl metadata -p playerctld --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{playerName}} : {{title}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "max-length":30,
+    "exec": "playerctl metadata -p playerctld --format '{\"text\": \"{{markup_escape(artist)}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
     "on-click": "playerctl play-pause",
     "on-scroll-down": "playerctl next",
     "on-scroll-up": "playerctl previous",
