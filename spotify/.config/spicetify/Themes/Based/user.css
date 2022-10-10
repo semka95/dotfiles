@@ -148,3 +148,7 @@ span.artist-artistVerifiedBadge-badge svg:nth-child(1) {
 .main-nowPlayingBar-nowPlayingBar {
   height: var(--player-bar-height);
 }
+
+.main-topBar-UpgradeButton {
+  display: none;
+}
