@@ -194,12 +194,12 @@ bindsym Control+Shift+Space exec makoctl dismiss --all
 
 bindsym --locked {
     # Multimedia
-    XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-    $mod+F11 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-    $mod+F12 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    $mod+Shift+F11 exec playerctl volume 0.05-
-    $mod+Shift+F12 exec playerctl volume 0.05+
+    XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+    XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+    $mod+F11 exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+    $mod+F12 exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK
+    $mod+Shift+F11 exec playerctl volume 0.05- && playerctl volume | xargs -I {} zsh -c 'qalc -t -s "decimal comma off" "{} * 100"' > $WOBSOCK
+    $mod+Shift+F12 exec playerctl volume 0.05+ && playerctl volume | xargs -I {} zsh -c 'qalc -t -s "decimal comma off" "{} * 100"' > $WOBSOCK
     XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
     $mod+F6 exec playerctl play-pause
     $mod+F7 exec playerctl previous
@@ -212,10 +212,10 @@ bindsym --locked {
     XF86AudioNext exec playerctl next
 
     # Brightness controls
-    XF86MonBrightnessUp exec brightnessctl s 10%+
-    XF86MonBrightnessDown exec brightnessctl s 10%-
-    $mod+F9 exec brightnessctl s 10%-
-    $mod+F10 exec brightnessctl s 10%+
+    XF86MonBrightnessUp exec brightnessctl s 10%+ | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+    XF86MonBrightnessDown exec brightnessctl s 10%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+    $mod+F9 exec brightnessctl s 10%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+    $mod+F10 exec brightnessctl s 10%+ | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
 }
 
 
