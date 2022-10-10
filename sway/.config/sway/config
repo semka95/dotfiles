@@ -189,8 +189,8 @@ floating_modifier $mod normal
 bindsym $mod+Escape exec $power
 
 # Notifications
-bindsym Control+Space exec makoctl dismiss
-bindsym Control+Shift+Space exec makoctl dismiss --all
+# bindsym Control+Space exec makoctl dismiss
+# bindsym Control+Shift+Space exec makoctl dismiss --all
 
 bindsym --locked {
     # Multimedia
