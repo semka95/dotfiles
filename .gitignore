@@ -4,3 +4,8 @@ bookmarks
 spotify/.config/spicetify/Backup/*
 spotify/.config/spicetify/Extracted/*
 darkman/.config/darkman/config.yaml
+zsh/.config/zsh/.zshrc.zwc
+zsh/.config/zsh/.zcompdump
+waybar/.config/waybar/colors-waybar.css
+wal/.cache/wal/*
+rofi/.config/rofi/colors.rasi
