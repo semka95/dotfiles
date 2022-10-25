@@ -4,7 +4,8 @@ set -e
 
 ## USER PREFERENCES ##
 RECORDER=wf-recorder
-TARGET=$(xdg-user-dir PICTURES)/screenshots
+SCREENSHOTS=$(xdg-user-dir PICTURES)/screenshots
+RECORDINGS=$(xdg-user-dir VIDEOS)/recordings
 SCREENSHARE=~/.local/bin/scripts/screenshare.sh
 
 FOCUSED=$(swaymsg -t get_tree | jq '.. | ((.nodes? + .floating_nodes?) // empty) | .[] | select(.focused and .pid) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')
@@ -51,9 +52,10 @@ EOF`
 
 sleep 0.1
 
-mkdir -p $TARGET
-FILENAME="$TARGET/$(date +'%Y-%m-%d_%Hh%Mm%Ss_screenshot.png')"
-RECORDING="$TARGET/$(date +'%Y-%m-%d_%Hh%Mm%Ss_recording.mp4')"
+mkdir -p $SCREENSHOTS
+mkdir -p $RECORDINGS
+FILENAME="$SCREENSHOTS/$(date +'%Y-%m-%d_%Hh%Mm%Ss_screenshot.png')"
+RECORDING="$RECORDINGS/$(date +'%Y-%m-%d_%Hh%Mm%Ss_recording.mp4')"
 
 case "$CHOICE" in
     "󰆟 Screenshot Fullscreen")
