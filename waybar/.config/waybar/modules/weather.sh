@@ -85,7 +85,7 @@ case $(echo ${weather[6]%%,*} | tr '[:upper:]' '[:lower:]') in
     ;;
 esac
 
-printf -v tooltip '<tt><big><b>%s</b></big>\n\n%s  <i>%s</i>\n%s  <span foreground="aqua">%s</span>\n%s  <span foreground="coral">%s</span>\n%s  %s\n%s  <span foreground="lightseagreen">%s</span></tt>' "${weather[0]}" "${weather[1]}" "${weather[6]}" "${weather[2]}" "${weather[7]}" "${weather[3]}" "${weather[8]}" "${weather[4]}" "${weather[9]}" "${weather[5]}" "${weather[10]}"
+printf -v tooltip '<tt><big><b>%s</b></big>\n%s  <i>%s</i>\n%s  <span foreground="aqua">%s</span>\n%s  <span foreground="coral">%s</span>\n%s  %s\n%s  <span foreground="lightseagreen">%s</span></tt>' "${weather[0]}" "${weather[1]}" "${weather[6]}" "${weather[2]}" "${weather[7]}" "${weather[3]}" "${weather[8]}" "${weather[4]}" "${weather[9]}" "${weather[5]}" "${weather[10]}"
 tooltip=$( echo "${tooltip}" | jq -Rs )
 
 printf '{"text":"%s %s", "alt":"%s", "tooltip":"%s"}\n' "$temperatureShort" "$condition" "${weather[0]}" "${tooltip:1:-3}"
