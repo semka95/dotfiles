@@ -1,5 +1,5 @@
 #!/bin/sh
 
-filepath=~/.config/Code/User/settings.json
+filepath=~/.config/VSCodium/User/settings.json
 
-sed -i "s|^  \"workbench.colorTheme\":.*|  \"workbench.colorTheme\": \"Gruvbox Dark Soft\",|" $filepath
+sed -i "s|^    \"workbench.colorTheme\":.*|    \"workbench.colorTheme\": \"Gruvbox Dark Soft\",|" $filepath
