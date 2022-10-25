@@ -34,12 +34,9 @@ set $wsF5  10:󰲷
 assign [instance="^jetbrains-goland$"] $ws2
 assign [app_id="^Code$"] $ws2
 
-assign [app_id="telegramdesktop"] $ws3
-assign [app_id=".*Telegram_Desktop"] $ws3
+assign [app_id="^telegramdesktop$"] $ws3
 assign [app_id="net.sourceforge.mumble.mumble"] $ws3
-assign [instance="^element$"] $ws3
 assign [instance="^discord$"] $ws3
-assign [instance="^signal$"] $ws3
 
 assign [app_id="org.kde.dolphin"] $ws4
 assign [instance="^pcmanfm$"] $ws4
@@ -52,17 +49,12 @@ assign [app_id="lagrange"] $ws5
 assign [app_id="firefox"] $wsF1
 
 assign [app_id="devdocs-desktop"] $wsF2
-assign [app_id="ghostwriter"] $wsF2
 
 assign [class="^Spotify$"] $wsF3
-assign [instance="^freezer$"] $wsF3
-assign [app_id="qmmp"] $wsF3
 assign [app_id="audacious"] $wsF3
-assign [class="^foobar2000.exe$"] $wsF3
 
-assign [instance="^typora$"] $wsF4
+assign [app_id="^ghostwriter$"] $wsF4
 
-assign [instance="^vlc$"] $wsF5
 assign [instance="^chatterino$"] $wsF5
 assign [app_id="^mpv$"] $wsF5
 
@@ -77,7 +69,7 @@ exec_always ~/.config/waybar/waybar.sh
 exec wal -R
 exec /usr/lib/kdeconnectd
 exec easyeffects --gapplication-service
-exec /usr/lib/polkit-kde-authentication-agent-1
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec playerctld daemon
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
