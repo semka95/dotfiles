@@ -1,0 +1,8 @@
+default partial alphanumeric_keys modifier_keys
+xkb_symbols "basic" {
+    include "us"
+
+    # Make Menu Mod4
+    key <COMP> { [ Hyper_L ] };
+    modifier_map Mod4 { Hyper_L };
+};
