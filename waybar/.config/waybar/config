@@ -2,8 +2,14 @@
   "layer": "bottom",
   "position": "top",
   "height": 30,
-  "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
-  "modules-center": ["clock"],
+  "modules-left": [
+    "sway/workspaces",
+    "sway/mode",
+    "sway/window"
+  ],
+  "modules-center": [
+    "clock"
+  ],
   "modules-right": [
     "custom/media",
     "tray",
@@ -50,13 +56,29 @@
   "temperature": {
     "critical-threshold": 80,
     "format": "{temperatureC}°C {icon}",
-    "format-icons": ["󱃃", "󰔏", "󱃂"],
+    "format-icons": [
+      "󱃃",
+      "󰔏",
+      "󱃂"
+    ],
     "tooltip": false
   },
   "battery": {
     "format": "{icon}",
     "format-alt": "{capacity}% {icon}",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ],
     "format-charging": "{capacity}% 󰂄",
     "interval": 30,
     "states": {
@@ -72,9 +94,19 @@
     "interval": 1,
     "format-alt-click": "click-right",
     "format-icons": {
-      "wifi": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-      "ethernet": ["󰈁"],
-      "disconnected": ["󰤮"]
+      "wifi": [
+        "󰤯",
+        "󰤟",
+        "󰤢",
+        "󰤥",
+        "󰤨"
+      ],
+      "ethernet": [
+        "󰈁"
+      ],
+      "disconnected": [
+        "󰤮"
+      ]
     },
     "on-click": "kitty --class nmwui nmtui-connect",
     "tooltip-format-wifi": "{essid} {frequency}",
@@ -86,7 +118,11 @@
     "format-alt-click": "click-right",
     "format-muted": "󰝟",
     "format-icons": {
-      "default": ["󰕿", "󰖀", "󰕾"]
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
     },
     "scroll-step": 5,
     "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}' > $WOBSOCK",
@@ -106,7 +142,10 @@
     "format": "{icon}",
     "format-alt": "{percent}% {icon}",
     "format-alt-click": "click-right",
-    "format-icons": ["󰌶", "󰛩"],
+    "format-icons": [
+      "󰌶",
+      "󰛩"
+    ],
     "on-scroll-down": "light -A 1",
     "on-scroll-up": "light -U 1"
   },
@@ -136,11 +175,26 @@
     "on-click": "~/.config/rofi/modi/bluetooth",
     "return-type": "json",
     "format-icons": {
-      "connected": ["󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
-      "on": ["󰂯"],
-      "off": ["󰂲"]
+      "connected": [
+        "󰤾",
+        "󰤿",
+        "󰥀",
+        "󰥁",
+        "󰥂",
+        "󰥃",
+        "󰥄",
+        "󰥅",
+        "󰥆",
+        "󰥈"
+      ],
+      "on": [
+        "󰂯"
+      ],
+      "off": [
+        "󰂲"
+      ]
     },
-    "signal": 11    
+    "signal": 11
   },
   "tray": {
     "icon-size": 14,
@@ -153,7 +207,7 @@
       "Playing": "󰏤 ",
       "Paused": "󰐊 "
     },
-    "max-length":30,
+    "max-length": 30,
     "exec": "playerctl metadata -p playerctld --format '{\"text\": \"{{markup_escape(artist)}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
     "on-click": "playerctl play-pause",
     "on-scroll-down": "playerctl next",
