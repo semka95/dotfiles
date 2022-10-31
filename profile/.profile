@@ -20,3 +20,4 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export GOPATH="$XDG_DATA_HOME"/go
 export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss
 export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
