@@ -23,6 +23,7 @@ alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 alias monerod=monerod --data-dir "$XDG_DATA_HOME"/bitmonero
 alias mitmproxy="mitmproxy --set confdir=$XDG_CONFIG_HOME/mitmproxy"
 alias mitmweb="mitmweb --set confdir=$XDG_CONFIG_HOME/mitmproxy"
+alias code="codium"
 
 # Antigen
 source ~/antigen.zsh
