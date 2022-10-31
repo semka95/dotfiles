@@ -106,15 +106,13 @@ for_window [app_id="^mpv$"] inhibit_idle visible
 # duplicate configuration for each keyboard, so firefox wouldn't crash on config reload
 input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_layout custom,ru
-    xkb_variant nodeadkeys
-    xkb_options grp:shifts_toggle,grp:win_space_toggle
+    xkb_options grp:shifts_toggle
 }
 
 input "1241:41421:HT_Game_KB" {
     xkb_layout custom,ru
     xkb_numlock enabled
-    xkb_variant nodeadkeys
-    xkb_options grp:shifts_toggle,grp:win_space_toggle
+    xkb_options grp:shifts_toggle
 }
 
 input type:pointer {
