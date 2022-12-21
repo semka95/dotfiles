@@ -31,24 +31,21 @@ set $wsF4  9:󰎛
 set $wsF5  10:󰲷
 
 # Default workspaces for common programs
-assign [instance="^jetbrains-goland$"] $ws2
 assign [app_id="^Code$"] $ws2
 
-assign [app_id="^telegramdesktop$"] $ws3
+assign [app_id="^org.telegram.desktop$"] $ws3
 assign [app_id="net.sourceforge.mumble.mumble"] $ws3
 assign [instance="^discord$"] $ws3
 
-assign [app_id="org.kde.dolphin"] $ws4
-assign [instance="^pcmanfm$"] $ws4
+assign [app_id="^thunar$"] $ws4
 
 assign [app_id="thunderbird"] $ws5
 assign [instance="^mailspring$"] $ws5
 assign [app_id="org.gabmus.gfeeds"] $ws5
-assign [app_id="lagrange"] $ws5
 
 assign [app_id="firefox"] $wsF1
 
-assign [app_id="devdocs-desktop"] $wsF2
+assign [app_id="org.zealdocs.zeal"] $wsF2
 
 assign [class="^Spotify$"] $wsF3
 assign [app_id="audacious"] $wsF3
