@@ -21,3 +21,4 @@ export GOPATH="$XDG_DATA_HOME"/go
 export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss
 export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java' -Dswing.aatext=TRUE -Dawt.useSystemAAFontSettings=on'
