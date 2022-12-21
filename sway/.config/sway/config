@@ -130,7 +130,10 @@ input type:touchpad {
 
 ### Specific window configuration
 for_window [title="^Authentication required$"] floating enable
-for_window [title="^Картинка в картинке$"] floating enable, resize set 367 207 px, sticky enable
+for_window [title="^Choose Files$"] floating enable, resize set 800 750 px
+for_window [title="^Save File$"] floating enable, resize set 800 750 px
+for_window [title="^Картинка в картинке$"] floating enable, resize set 500 280 px, sticky toggle, move position 940 620, opacity 0.7
+for_window [title="^Picture-in-Picture$"] floating enable, resize set 500 280 px, sticky toggle, move position 940 620, opacity 0.7
 for_window [title="^Выбор файлов$"] floating enable
 for_window [app_id="nmwui"] floating enable, resize set 550 650 px
 for_window [app_id="org.kde.polkit-kde-authentication-agent-1"] floating enable, resize set 550 250 px
