@@ -11,6 +11,7 @@
     "clock"
   ],
   "modules-right": [
+    "image/album-art",
     "custom/media",
     "tray",
     "custom/gammastep",
@@ -232,5 +233,11 @@
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
+  },
+  "image/album-art": {
+    "path": "/tmp/cover",
+    "size": 28,
+    "interval": 5,
+    "on-update": "~/.config/waybar/modules/cover.sh"
   }
 }
