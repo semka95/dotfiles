@@ -156,6 +156,8 @@ bindsym --no-repeat --mask-modifiers --whole-window --release button9 exec dbus-
 
 bindsym Print exec $screenshot
 
+bindsym Alt+Tab exec rofi -show window
+
 bindsym --to-code {
     # Kill focused window
     $mod+Shift+q kill
