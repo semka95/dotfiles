@@ -138,7 +138,13 @@ for_window [title="^Выбор файлов$"] floating enable
 for_window [app_id="nmwui"] floating enable, resize set 550 650 px
 for_window [app_id="org.kde.polkit-kde-authentication-agent-1"] floating enable, resize set 550 250 px
 for_window [title="Перемещение файлов"] floating enable
+for_window [title="^File Operation Progress$"] floating enable
 for_window [title="Сохранить как"] floating enable, resize set 550 650 px
+for_window [app_id="nm-connection-editor"] floating enable
+for_window [title="Open File"] floating enable
+for_window [app_id="mscore" title="Open"] floating enable
+for_window [app_id="io.crow_translate.CrowTranslate"] floating enable
+for_window [app_id="sublime_text" title="Select Folder"] floating enable
 
 ### Key bindings
 bindsym $mod+Return exec $term
