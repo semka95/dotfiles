@@ -1,0 +1,5 @@
+#!/bin/sh
+set -a
+[ -f /usr/local/bin/.env ] && . "/usr/local/bin/.env"
+set +a
+exec /usr/bin/sway $@
