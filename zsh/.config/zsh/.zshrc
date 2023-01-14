@@ -14,6 +14,7 @@ compinit
 # Path
 export PATH="${PATH}:$GOPATH/bin"
 export PATH="$HOME/.radicle/bin:$PATH"
+export PATH="${PATH}:$HOME/.local/bin"
 
 alias ssh="kitty +kitten ssh"
 alias du="dust"
