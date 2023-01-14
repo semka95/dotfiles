@@ -3,7 +3,7 @@
 set -e
 
 ## USER PREFERENCES ##
-RECORDER=wf-recorder
+RECORDER="wf-recorder -c h264_vaapi -d /dev/dri/renderD128"
 SCREENSHOTS=$(xdg-user-dir PICTURES)/screenshots
 RECORDINGS=$(xdg-user-dir VIDEOS)/recordings
 SCREENSHARE=~/.local/bin/scripts/screenshare.sh
@@ -11,7 +11,7 @@ SCREENSHARE=~/.local/bin/scripts/screenshare.sh
 FOCUSED=$(swaymsg -t get_tree | jq '.. | ((.nodes? + .floating_nodes?) // empty) | .[] | select(.focused and .pid) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')
 OUTPUTS=$(swaymsg -t get_outputs | jq -r '.[] | select(.active) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')
 WINDOWS=$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"')
-REC_PID=$(pidof $RECORDER) || true
+REC_PID=$(pidof wf-recorder) || true
 
 screenshareToggle() {
     if $SCREENSHARE is-recording; then
@@ -68,7 +68,7 @@ case "$CHOICE" in
         wl-copy $(slurp | grim -g - - | zbarimg -q --raw -)
         REC=2 ;;
     "󰊄 Recognize Text")
-        wl-copy -n $(slurp | grim -g - - | tesseract - - -l eng+rus | rev | cut -c 2- | rev)
+        wl-copy -n $(slurp | grim -g - - | tesseract - - -l eng+rus -c debug_file=/dev/null)
         REC=3 ;;
     "󰹑 Screenshot Selected Output")
         echo "$OUTPUTS" | slurp | grim -g - "$FILENAME"
@@ -104,7 +104,6 @@ case $REC in
         ;;
     1)
         notify-send "Recording" "Recording stopped: $RECORDING" -t 6000
-        wl-copy < $RECORDING
         ;;
     2)
         qr=$(wl-paste)
