@@ -15,8 +15,6 @@
     "custom/media",
     "tray",
     "custom/gammastep",
-    // "cpu",
-    // "memory",
     "temperature",
     "custom/weather",
     "pulseaudio",
@@ -24,8 +22,7 @@
     "battery",
     "custom/bluetooth",
     "network",
-    "sway/language",
-    "custom/notification"
+    "sway/language"
   ],
   "sway/mode": {
     "format": ">> {}"
