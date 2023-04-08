@@ -145,6 +145,13 @@ for_window [title="Open File"] floating enable
 for_window [app_id="mscore" title="Open"] floating enable
 for_window [app_id="io.crow_translate.CrowTranslate"] floating enable
 for_window [app_id="sublime_text" title="Select Folder"] floating enable
+for_window [app_id="org.zealdocs.zeal"] floating enable
+for_window [title="Choose save path"] floating enable
+for_window [title="Open Torrent Files" app_id="qbittorrent"] floating enable
+for_window [app_id="gnome-pomodoro"] floating enable
+for_window [app_id="telegram-desktop" title="Choose a file"] floating enable
+for_window [app_id="thunar" title="Confirm to replace files"] floating enable
+for_window [title="^Open Folder$"] floating enable
 
 ### Key bindings
 bindsym $mod+Return exec $term
