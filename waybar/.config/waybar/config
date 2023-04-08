@@ -109,7 +109,7 @@
         "󰤮"
       ]
     },
-    "on-click": "kitty --class nmwui nmtui-connect",
+    "on-click": "networkmanager_dmenu",
     "tooltip-format-wifi": "{essid} {frequency}",
     "tooltip-format-ethernet": "{bandwidthDownBits}󱦳 {bandwidthUpBits}󱦲"
   },
