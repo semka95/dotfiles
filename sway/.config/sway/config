@@ -31,7 +31,7 @@ set $wsF4  9:󰎛
 set $wsF5  10:󰲷
 
 # Default workspaces for common programs
-assign [app_id="^Code$"] $ws2
+assign [app_id="^codium-url-handler$"] $ws2
 
 assign [app_id="^org.telegram.desktop$"] $ws3
 assign [app_id="net.sourceforge.mumble.mumble"] $ws3
