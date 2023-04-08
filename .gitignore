@@ -9,3 +9,4 @@ zsh/.config/zsh/.zcompdump
 waybar/.config/waybar/colors-waybar.css
 wal/.cache/wal/*
 rofi/.config/rofi/colors.rasi
+regreet/.config/regreet/regreet.toml
