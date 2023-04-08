@@ -45,8 +45,6 @@ assign [app_id="org.gabmus.gfeeds"] $ws5
 
 assign [app_id="firefox"] $wsF1
 
-assign [app_id="org.zealdocs.zeal"] $wsF2
-
 assign [class="^Spotify$"] $wsF3
 assign [app_id="audacious"] $wsF3
 
@@ -61,10 +59,7 @@ exec telegram-desktop
 exec firefox
 exec $term
 exec_always ~/.config/waybar/waybar.sh
-# Everything working nice without kanshi in my simple setup
-# exec_always pkill kanshi; exec kanshi
 exec wal -R
-exec /usr/lib/kdeconnectd
 exec easyeffects --gapplication-service
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec playerctld daemon
