@@ -24,7 +24,7 @@ IFS=$'\n'
     flock -x 3
     cacheage=$(($(date +%s) - $(stat -c '%Y' "$cachedir/$cachefile")))
     if [ $cacheage -gt 1750 ] || [ ! -s $cachedir/$cachefile ]; then
-        data=($(curl -s https://en.wttr.in/$LOCATION\?0QnT 2>&1))
+        data=($(curl -s https://en.wttr.in/$LOCATION\?0QnTm 2>&1))
 
         echo $LOCATION_NAME > $cachedir/$cachefile
 
