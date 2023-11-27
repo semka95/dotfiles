@@ -25,20 +25,23 @@ alias monerod=monerod --data-dir "$XDG_DATA_HOME"/bitmonero
 alias mitmproxy="mitmproxy --set confdir=$XDG_CONFIG_HOME/mitmproxy"
 alias mitmweb="mitmweb --set confdir=$XDG_CONFIG_HOME/mitmproxy"
 alias code="codium"
-
+alias less="moar"
+alias sudo="doas"
 # Antigen
-source ~/antigen.zsh
+source /usr/share/zsh/share/antigen.zsh
 
 # Load Oh My Zsh
 antigen use oh-my-zsh
 
 antigen bundle git
 antigen bundle command-not-found
-antigen bundle docker
+# antigen bundle docker
 antigen bundle docker-compose
 
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
 antigen bundle zdharma-continuum/fast-syntax-highlighting
 
 antigen theme borekb/agkozak-zsh-theme@prompt-customization
