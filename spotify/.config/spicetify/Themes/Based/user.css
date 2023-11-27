@@ -149,10 +149,18 @@ span.artist-artistVerifiedBadge-badge svg:nth-child(1) {
   height: var(--player-bar-height);
 }
 
-.Button-y0gtbx-0 {
+.main-topBar-UpgradeButton {
+  display: none;
+}
+
+.main-topBar-buddyFeed {
   display: none;
 }
 
 .main-leaderboardComponent-container {
+  display: none;
+}
+
+.WiPggcPDzbwGxoxwLWFf.contentSpacing {
   display: none;
 }
