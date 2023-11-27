@@ -35,7 +35,7 @@ assign [app_id="^codium-url-handler$"] $ws2
 
 assign [app_id="^org.telegram.desktop$"] $ws3
 assign [app_id="net.sourceforge.mumble.mumble"] $ws3
-assign [instance="^discord$"] $ws3
+assign [app_id="^discord$"] $ws3
 
 assign [app_id="^thunar$"] $ws4
 
@@ -58,15 +58,15 @@ exec gammastep
 exec telegram-desktop
 exec firefox
 exec $term
-exec_always ~/.config/waybar/waybar.sh
+bar swaybar_command waybar
 exec wal -R
 exec easyeffects --gapplication-service
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec playerctld daemon
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-output $int position 0,0 resolution 1920x1080
-output $ext position 1920,0 resolution 1440x900
+output $ext position 0,0 resolution 1440x900
+output $int position 1440,0 resolution 1920x1080
 
 # Default outputs for workspaces
 workspace $ws1 output $int
@@ -123,6 +123,10 @@ input type:touchpad {
     click_method none
 }
 
+input "1133:49284:Logitech_G102_Prodigy_Gaming_Mouse" {
+    left_handed enabled
+  }
+
 ### Specific window configuration
 for_window [title="^Authentication required$"] floating enable
 for_window [title="^Choose Files$"] floating enable, resize set 800 750 px
@@ -147,14 +151,15 @@ for_window [app_id="gnome-pomodoro"] floating enable
 for_window [app_id="telegram-desktop" title="Choose a file"] floating enable
 for_window [app_id="thunar" title="Confirm to replace files"] floating enable
 for_window [title="^Open Folder$"] floating enable
+for_window [app_id="^org.rncbc.qjackctl$"] floating enable
 
 ### Key bindings
 bindsym $mod+Return exec $term
 
 # have to install modified sway - https://aur.archlinux.org/packages/sway-mask-modifiers-git
 # because of the issue https://github.com/swaywm/sway/issues/6456
-bindsym --no-repeat --mask-modifiers --whole-window button9 exec dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.startTalking
-bindsym --no-repeat --mask-modifiers --whole-window --release button9 exec dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.stopTalking 
+# bindsym --no-repeat --mask-modifiers --whole-window button9 exec dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.startTalking
+# bindsym --no-repeat --mask-modifiers --whole-window --release button9 exec dbus-send --session --type=method_call --dest=net.sourceforge.mumble.mumble / net.sourceforge.mumble.Mumble.stopTalking 
 
 bindsym Print exec $screenshot
 
